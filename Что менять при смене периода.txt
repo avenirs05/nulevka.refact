@@ -1,0 +1,181 @@
+ООО
+---------
+
+company.php
+------------
+	<div id="div-tax-system">
+
+	
+company-js/choice-tax.js
+------------
+	// Другие периоды
+	$("#another-periods").click(function()...{
+			...
+			.children('input:not(#qrt-4-2017)'); // здесь меняем на самый ближайший период
+			...
+	});
+	
+	// Если выбран 4-й квартал
+	$("#qrt-4-2017, #qrt-4-2016, #qrt-4-2015, #qrt-4-2014").change(showAndHideUK);
+	
+	
+	// Кнопка Дальше
+	$("#btn-next-tax-system").click(function() {
+		...
+	    if ( $('#simple').prop('checked') ) {
+	        if ( $("#qrt-4-2017").prop('checked') || 
+	             $("#qrt-4-2016").prop('checked') || 
+	             $("#qrt-4-2015").prop('checked') || 
+	             $("#qrt-4-2014").prop('checked') ) 
+				...
+	    }
+	});
+	
+
+functions-company.js
+------------
+	var showAndHideUK = function () {
+		...
+	}
+	
+	function insertDeclUsnIfQuartIs4 () {
+		...
+	}
+	
+	function insertDiffReportsIfQuartIs4 () {
+		...
+	}
+	
+	
+company-js/clear.js 
+------------
+	// Удаление класса .month если вернулись назад и отметили(убрали) периоды
+    $("html").on('change', '#qrt-3-2017', function () { $('.month').remove(); });
+	...
+    // Удаление класса .month если вернулись назад и отметили(убрали) периоды
+	
+	
+company-js/one-face.js
+------------
+		// Кнопка Назад
+		$("#btn-back-one-face").click(function() {
+			...
+			if ( $('#simple').prop('checked') ) {
+				if ( $("#qrt-4-2017").prop('checked') ||
+					 $("#qrt-4-2016").prop('checked') || 
+					 $("#qrt-4-2015").prop('checked') || 
+					 $("#qrt-4-2014").prop('checked') ) 
+			...
+			}                
+		});
+		
+		
+company-js/szv.js
+------------
+		$("#btn-next-szv-quest").click(function() {
+			...
+			if ( $('#qrt-4-2017').prop('checked') || 
+				 $('#qrt-4-2016').prop('checked') || 
+				 $('#qrt-4-2015').prop('checked') ||
+				 $('#qrt-4-2014').prop('checked') ) 
+			...
+		});
+		
+company-js/will-send.js 
+-------------
+		$("#btn-back-will-send").click(function() {
+			... 
+			$('#decl-usn-4-2017').parent('label').parent('div').remove();
+			...
+			$('#buh-rep-ifns-4-2017').parent('label').parent('div').remove();
+			...
+			$('#buh-rep-stat-4-2017').parent('label').parent('div').remove();
+			...
+			$('#workers-cnt-4-2017').parent('label').parent('div').remove();
+		}
+		
+		
+
+ИП
+---------
+
+	person.php
+	-----------
+	<div id="choice-years">
+	...
+	
+	
+	person.js/choice-tax.js
+	------------------------
+		// Выберите систему налогообложения
+		$("#simple-ip").change(function () { ... });
+		
+		// Если Упрощенка и выбран хотя бы 1 год, появляется/исчезает кнопка Дальше
+		$('#year-2017-ip-simple').change(...);
+		
+	person.js/tax-base.js
+	------------------------
+		$("#btn-next-base, #btn-next-tax-system-ip").click(function() { 
+			 if ( $('#general-ip').prop('checked') ) { ... }
+		}
+		
+	functions-general.js 
+	------------------------
+		// function calculateFinalSum () {
+			...
+		  if ( $('#simple-ip').prop('checked') ) {  
+			...
+		  }  
+		}
+		
+	functions-person.php	
+	-----------------
+	function insertDeclNdflIfIpIfQuartIs4 () { ... }
+	
+	function insertNalogDecl () { }
+ 
+	function showHideBtnNextSimpleIp () {}
+	
+	
+	functions.php
+	-----------------
+		function findQuart () {...}
+		function findYearIfSimpleIP () {...}
+		function findUK () { ... }
+		function willSendDeclNds () 
+		function willSendDeclProfit ()
+		function willSendCountIns ()
+		function willSendCountFss ()
+		function willSendDeclOne ()
+		function willSendCountFss ()
+		function willSendSzv ()
+		function willSendBuhRepIfns ()
+		function willSendBuhRepStat () 
+		function willSendWorkersCnt()
+		function willSendDeclUsn ()
+		function willSendDeclNdsIp ()
+		function willSendDeclNdflIp () 
+		function willSendDeclYearIp ()
+	
+	
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
