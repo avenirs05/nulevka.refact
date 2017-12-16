@@ -1,5 +1,24 @@
 <?php
 
+/*
+ * Выводит список систем налогообложения
+ * @param array $taxSystem - массив систем налогообложения 
+ * array $taxSystem: key - id элемента, value - название системы налогообложения
+ * @param string $attrName - атрибут name
+ * @return string html - список input(ов)
+ */
+function taxSystemList ($taxSystem, $attrName) {
+    $html = null;
+    
+    foreach ($taxSystem as $key => $value) {
+        $html .= "<label for={$key}>
+                    <input id={$key} type='radio' name={$attrName} value={$key}>{$value}
+                  </label><br>";        
+    }
+    
+    return $html;
+} 
+
 function isGeneralOrSimpleTaxSystemCompany () {
     if ($_POST['tax-system'] == 'general') {
         return '<b>Система налогообложения:</b> общая<br><br>';
