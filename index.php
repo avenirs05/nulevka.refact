@@ -19,9 +19,9 @@
     <script src="functions-company.js"></script>
     <script src="functions-person.js"></script>
     <script src="functions-general.js"></script>
-    <script src="events-company.js"></script>
+<!--     <script src="events-company.js"></script>
     <script src="events-person.js"></script>
-    <script src="events-general.js"></script>
+    <script src="events-general.js"></script> -->
 
     <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45030163 = new Ya.Metrika({ id:45030163, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45030163" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
@@ -51,7 +51,7 @@
         </div> 
         <div class="col-md-7">
             <div class="ipad">
-                <a href="company.php" target="_blank"><button class="btn-inside-ipad-1">Сдать нулевку по ООО</button></a>
+                <a href="company/company.php" target="_blank"><button class="btn-inside-ipad-1">Сдать нулевку по ООО</button></a>
                 <a href="person.php" target="_blank"><button class="btn-inside-ipad-1 btn-inside-ipad-2">Составить нулевку для ИП</button></a>
                 <a href="http://mybuh.online/" target="_blank"><button class="btn-inside-ipad-1 btn-inside-ipad-3">У меня не нулевка!</button></a>
             </div>         
@@ -72,7 +72,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 btns-wrapper text-center">
-            <a href="company.php" target="_blank"><button>Сдать нулевку по ООО</button></a>
+            <a href="company/company.php" target="_blank"><button>Сдать нулевку по ООО</button></a>
             <a href="person.php" target="_blank"><button>Составить нулевку для ИП</button></a>
             <a href="http://mybuh.online/" target="_blank"><button id="btn-not-null-mob">У меня не нулевка!</button></a>       
         </div>
@@ -177,7 +177,7 @@
             <div class="how-it-works-wrapper">
                 <div class="for-ooo">
                     <h4 class="text-center">Для юридических лиц</h4>
-                    <p>1. Отправьте <a href="company.php" target="_blank">заявку</a> на сдачу «нулевки»</p> 
+                    <p>1. Отправьте <a href="company/company.php" target="_blank">заявку</a> на сдачу «нулевки»</p> 
                     <p>2. Оплатите услуги любым удобным способом <a onclick="return false;" href="#"  data-toggle="tooltip" data-placement="right" title="Банковской картой, Яндекс-деньги, С баланса мобильного, Qiwi"><span class="glyphicon glyphicon-question-sign"></span></a></p> 
                     <p>3. Подпишите и отправьте нам любым способом доверенность, которую вы получите на E-mail <a onclick="return false;" href="#" data-toggle="tooltip" data-placement="right" title="E-mail, WhatsApp, Viber, Telegram"><span class="glyphicon glyphicon-question-sign"></span></a></p> 
                     <p>4. Получите отчет о сдаче вашей «нулевки» в течение 24 часов!</p>         
@@ -201,7 +201,7 @@
             <div class="how-it-works-wrapper-mob">
                 <div class="for-ooo-mob">
                     <h4 class="text-center">Для юридических лиц</h4>
-                    <p>1. Отправьте <a href="company.php" target="_blank">заявку</a> на сдачу «нулевки»</p> 
+                    <p>1. Отправьте <a href="company/company.php" target="_blank">заявку</a> на сдачу «нулевки»</p> 
                     <p>2. Оплатите услуги любым удобным способом <a onclick="return false;" href="#"  data-toggle="tooltip" data-placement="right" title="Банковской картой, Яндекс-деньги, С баланса мобильного, Qiwi"><span class="glyphicon glyphicon-question-sign"></span></a></p> 
                     <p>3. Подпишите и отправьте нам любым способом доверенность, которую вы получите на E-mail <a onclick="return false;" href="#" data-toggle="tooltip" data-placement="right" title="E-mail, WhatsApp, Viber, Telegram"><span class="glyphicon glyphicon-question-sign"></span></a></p> 
                     <p>4. Получите отчет о сдаче вашей «нулевки» в течение 24 часов!</p>         
@@ -243,7 +243,7 @@
                 </tr>
             </table>       
             <div id="look-all-price" class="text-center">
-                <a href="company.php" target="_blank">Рассчитать стоимость для ООО</a><br><br>
+                <a href="company/company.php" target="_blank">Рассчитать стоимость для ООО</a><br><br>
                 <a href="person.php" target="_blank">Рассчитать стоимость для ИП</a><br><br>
                 <a href="price.php" target="_blank">Посмотреть полный прайс-лист</a>
             </div>
@@ -284,7 +284,7 @@
                 </tr>
             </table>      
             <div id="look-all-price-mob" class="text-center">
-                <a href="company.php" target="_blank">Рассчитать стоимость для ООО</a><br><br>
+                <a href="company/company.php" target="_blank">Рассчитать стоимость для ООО</a><br><br>
                 <a href="person.php" target="_blank">Рассчитать стоимость для ИП</a><br><br>
                 <a href="price.php" target="_blank">Посмотреть полный прайс-лист</a>
             </div>

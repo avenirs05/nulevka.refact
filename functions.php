@@ -1,8 +1,8 @@
 <?php
 
-/*
+/**
  * Выводит список систем налогообложения
- * @param array $taxSystem - массив систем налогообложения 
+ * @param array $taxSystem - массив систем налогообложения. 
  * array $taxSystem: key - id элемента, value - название системы налогообложения
  * @param string $attrName - атрибут name
  * @return string html - список input(ов)
@@ -18,6 +18,24 @@ function taxSystemList ($taxSystem, $attrName) {
     
     return $html;
 } 
+
+
+/**
+ * Выводит первый период в списке периодов
+ * @param array $firstQuarterAttr - массив атрибутов
+ * @return string html - первый период
+ */
+function firstQuarter ($firstQuarterAttr) {
+    extract($firstQuarterAttr);    
+    $html = "<div data-is-four={$isFour} class={$divClass}>
+                <label for={$inputId}>
+                    <input id={$inputId} type='checkbox' name={$name} {$checked}>{$labelText}
+                </label>
+             </div>";     
+
+    return $html;
+}
+
 
 function isGeneralOrSimpleTaxSystemCompany () {
     if ($_POST['tax-system'] == 'general') {
