@@ -17,6 +17,7 @@
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
+    <script src="../events-general.js"></script>
     <script src="../company-js/choice-tax/functions.js"></script>
     <script src="../company-js/choice-tax/events.js"></script>
 

@@ -15,8 +15,15 @@ $(function () {
 
 	$("#not-know").change(function () {
 	    $('#choice-quarters').hide();
-	    $('#modal-not-know').modal('show')
+	    $('#modal-not-know').modal('show');
 	    $('#btn-next-tax-system').hide();
+	});
+
+	// Другие периоды	
+	$("#another-quarters-text").click(function() {		
+		if ( $('#another-quarters-wrap').css('display') == "none" ) {
+	          $('#another-quarters-wrap').show(); 
+	  } else $('#another-quarters-wrap').hide();
 	});
 
 });

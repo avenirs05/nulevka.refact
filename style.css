@@ -11,6 +11,10 @@ a {
 	text-decoration: none;	
 }
 
+.display-none {
+	display: none;
+}
+
 .bold {
 	font-weight: bold;
 }
@@ -659,9 +663,10 @@ input[type="checkbox"] {
 	margin-right: 7px;
 }
 
-#another-periods, #years-simple {
+#another-quarters-text, #years-simple {
 	text-decoration: none;
 	border-bottom: 1px #028090 dashed;
+	cursor: pointer;
 }
 
 #first-another-period {
@@ -793,7 +798,7 @@ input[type="checkbox"] {
 }
 
 #choice-quarters > i > span,
-#another-periods,
+#another-quarters-text,
 .div-quarters,
 .periods-will-send,
 .month > span,
