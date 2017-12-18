@@ -5,18 +5,9 @@
  * @param array $taxSystem - массив систем налогообложения. 
  * array $taxSystem: key - id элемента, value - название системы налогообложения
  * @param string $attrName - атрибут name
- * @return string html - список input(ов)
  */
-function taxSystemList ($taxSystem, $attrName) {
-    $html = null;
-    
-    foreach ($taxSystem as $key => $value) {
-        $html .= "<label for={$key}>
-                    <input id={$key} type='radio' name={$attrName} value={$key}>{$value}
-                  </label><br>";        
-    }
-    
-    return $html;
+function showTaxSystemList ($taxSystem, $attrName) {
+    require_once 'templates/choice-tax.php';  
 } 
 
 
@@ -25,7 +16,7 @@ function taxSystemList ($taxSystem, $attrName) {
  * @param array $firstQuarterAttr - массив атрибутов
  * @return string html - первый период
  */
-function firstQuarter ($firstQuarterAttr) {
+function getFirstQuarter ($firstQuarterAttr) {
     extract($firstQuarterAttr);    
     $html = "<div data-is-four={$isFour} class={$divClass}>
                 <label for={$inputId}>
@@ -42,7 +33,7 @@ function firstQuarter ($firstQuarterAttr) {
  * @param array $quarterText - текст чекбокса (например, "2-й квартал 2015 года")
  * @return string 'yes' or 'no' 
  */
-function isFour ($quarterText) {
+function isFourQuarter ($quarterText) {
     if ($quarterText[0] === '4') {
         return 'yes';
     } else return 'no';
@@ -59,7 +50,7 @@ function anotherQuarters ($anotherQuartersAttr) {
     $html = null; 
     $i = 0;
     foreach ($inputIds as $value) {
-        $isFour = isFour($labelTexts[$i]);
+        $isFour = isFourQuarter($labelTexts[$i]);
         $html .= "<div data-is-four={$isFour} class={$divClass}>
                     <label for={$inputIds[$i]}>
                         <input id={$inputIds[$i]} type='checkbox' name={$inputIds[$i]}>{$labelTexts[$i]}

@@ -10,8 +10,8 @@
                   'simple'  => 'Упрощенная', 
                   'envd'    => 'ЕНВД', 
                   'not-know' => 'Не знаю'
-                  );          
-                echo taxSystemList($taxSystem, 'tax-system'); 
+                );          
+                showTaxSystemList($taxSystem, 'tax-system'); 
                    
                 require_once 'choice-quarters.php'; 
             ?>

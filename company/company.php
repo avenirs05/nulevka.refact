@@ -30,11 +30,9 @@
     <!-- {/literal} END JIVOSITE CODE -->
 </head>
 <body>
-<?php require_once 'tax-system/functions.php'; ?>  
-<?php require_once '../modals.php'; ?>
-<?php require_once '../header.php'; ?>  
-<?php require_once 'tax-system/tax-system-section.php'; ?>
-
-
+    <?php require_once 'choice-tax/functions.php'; ?>  
+    <?php require_once '../modals.php'; ?>
+    <?php require_once '../header.php'; ?>  
+    <?php require_once 'choice-tax/choice-tax.php'; ?>
 </body>
 </html>
