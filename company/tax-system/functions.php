@@ -1,4 +1,14 @@
-<?php
+﻿<?php
+
+/**
+ * Debug
+ */
+
+function d ($data) {
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}
 
 /**
  * Выводит список систем налогообложения
@@ -28,10 +38,12 @@ function taxSystemList ($taxSystem, $attrName) {
  */
 function firstQuarter ($firstQuarterAttr) {
     extract($firstQuarterAttr);    
-    $quarterAndText = substr($inputIds[$i], 4);
+    $inputId = 'qrt-' . mb_substr($labelText, 0, 1) . '-' . mb_substr($labelText, 12, 4);
+    $quarterAndText = substr($inputId, 4);
+
     $html = "<div data-is-four='{$isFour}' class='{$wrapClass}'>
                 <label id='first-quarter-label' for='{$inputId}'>
-                    <input id='{$inputId}' type='checkbox' name='{$name}' {$checked}>
+                    <input id='{$inputId}' type='checkbox' name='{$inputId}' {$checked}>
                     {$labelText}
                 </label>
              </div>";  
@@ -65,6 +77,21 @@ function isFour ($quarterText) {
 }
 
 
+/**
+ * 
+ * @param array $anotherQuartersAttr - массив атрибутов
+ * @return array id of inputs 
+ */
+function getInputIds ($anotherQuartersAttr) {
+    $inputIds = null;
+    $labelTextsArr = $anotherQuartersAttr['labelTexts'];
+    foreach ($labelTextsArr as $value) {
+        $inputIds[] = 'qrt-' . mb_substr($value, 0, 1) . '-' . mb_substr($value, 12, 4);
+    }
+
+    return $inputIds; 
+}
+
 
 /**
  * Выводит иные периоды в списке периодов
@@ -75,16 +102,17 @@ function anotherQuarters ($anotherQuartersAttr) {
     extract($anotherQuartersAttr);   
     $html = null; 
     $i = 0;
+    $inputIds = getInputIds($anotherQuartersAttr);
     foreach ($inputIds as $value) {
         $isFour = isFour($labelTexts[$i]);
         $quarterAndText = substr($inputIds[$i], 4);
-            $html .= 
-                "<div data-is-four='{$isFour}' class='{$wrapClass}'>
-                    <label for='{$inputIds[$i]}'>
-                        <input id='{$inputIds[$i]}' type='checkbox' name='{$inputIds[$i]}'>
-                        {$labelTexts[$i]}
-                    </label>
-                </div>";
+        $html .= 
+            "<div data-is-four='{$isFour}' class='{$wrapClass}'>
+                <label for='{$inputIds[$i]}'>
+                    <input id='{$inputIds[$i]}' type='checkbox' name='{$inputIds[$i]}'>
+                    {$labelTexts[$i]}
+                </label>
+            </div>";
         if ($isFour =='yes') {
             $html .= 
                 "<p class='uk-wrap' style='display: none;'><b>Как внесен уставный капитал?</b><br>
