@@ -740,14 +740,23 @@ input[type="checkbox"] {
 	background-color: #E7382B;
 }
 
-#label-tranz-yes, #label-one-face-yes, 
+#form-tax-system button.disabled-btn {
+	color: green;
+}
+
+#form-tax-system button.disabled-btn:hover {
+	background-color: #339933;
+}
+
+
+#label-trans-yes, #label-one-face-yes, 
 #label-base-inc, #label-szv-quest-yes  {
 	font-size: 18px;
 	margin-top: 15px;
 	color: #028090;
 }
 
-#label-tranz-no, #label-one-face-no,
+#label-trans-no, #label-one-face-no,
 #label-base-inc-spent, #label-szv-quest-no {
 	font-size: 18px;
 	color: #028090;

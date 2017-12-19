@@ -19,6 +19,7 @@
                 '4-й квартал 2014 года (годовая)'
              )
         );
+        
         echo anotherQuarters($anotherQuartersAttr);
     ?>
 </div>

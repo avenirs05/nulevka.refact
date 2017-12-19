@@ -9,6 +9,7 @@
         );   
  
         echo firstQuarter($firstQuarterAttr);
+        
         require_once 'another-quarters.php'; 
     ?>    
 </div>
