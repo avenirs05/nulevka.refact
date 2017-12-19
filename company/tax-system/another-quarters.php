@@ -3,7 +3,7 @@
     <?php
         $anotherQuartersAttr = array(
             'isFour' => 'yes',
-            'divClass' => 'div-quarters',
+            'wrapClass' => 'div-quarters',
             'inputIds' => array(
                 'qrt-3-2017',
                 'qrt-2-2017',

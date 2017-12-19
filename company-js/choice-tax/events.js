@@ -26,4 +26,27 @@ $(function () {
 	  } else $('#another-quarters-wrap').hide();
 	});
 
+	// Уставный капитал. Если выбран 4-й квартал, то выпадает способ его внесения
+  // Поведение самого первого чекбокса - не здесь! Отдельно описано
+	$("#another-quarters-wrap .div-quarters input:checkbox").change(function() {	
+			var howPutUk = $(this).parent().parent().next();
+			var wrap = $(this).parent().parent();
+			if (wrap.data('is-four') == 'yes') {
+					if ( $(this).prop('checked') ) {
+						  howPutUk.show(); 
+					} else howPutUk.hide();
+			}	
+	});
+
+	// Поведение самого первого чекбокса
+	$("#first-quarter-label input:checkbox").change(function() {	
+			var howPutUk = $(this).parent().parent().next();
+			var wrap = $(this).parent().parent();
+			if (wrap.data('is-four') == 'yes') {
+					if ( $(this).prop('checked') ) {
+						  howPutUk.show(); 
+					} else howPutUk.hide();
+			}	
+	});
+
 });
