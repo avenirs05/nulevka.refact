@@ -57,30 +57,23 @@ $(function () {
 
 	// Кнопка Дальше
 	// Если общая система, то переход в transactions
+	// Если упрощенка и нет ни одного 4-го квартала, то переход в one-face
 	// Если упрощенка и выбран хотя бы один 4-й квартал, то переход в tax-base 
-	// Если упрощенка и нет ни одного 4-го квартала, то переход в one-face 
 	$("#btn-next-tax-system").click(function() {
+		var checkbox = '.div-quarters input:checkbox';
+		var wrap = '.div-quarters';
+
 		if ( $('#general').prop('checked') ) {
 					$("#tax-system-section").hide();
 					$("#transactions-section").show();
 		}
 
 		if ( $('#simple').prop('checked') ) {
-					var cntChecked = 0;
 					$('#tax-system-section').hide();
 
-					$('.div-quarters').each(function(index, element) {	
-							var checkbox = $(".div-quarters input:checkbox");
-							if ( $(element).data('is-four') == 'yes' && checkbox.prop('checked') ) {		
-										cntChecked++;	    
-								    $('#tax-base-section').show();	
-								    return false;	
-			    		}						  
-					});	
-
-					if ( cntChecked === 0 ) {							
-							$('#one-face-section').show();
-					}	
+					if ( noCheckedFourQuart(checkbox, wrap) === true ) {
+								$('#one-face-section').show();
+					} else $('#tax-base-section').show();
 		}
 	});
 
@@ -88,8 +81,7 @@ $(function () {
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
 	$(".div-quarters input:checkbox").change(function() {
-			var checks = $(".div-quarters input:checkbox");
-			var cntChecked = 0;
+			var checkbox = '.div-quarters input:checkbox';
 
 			if ( $(this).prop('checked') ) {
 					if ( $('#btn-next-tax-system').hasClass('disabled-btn') ) {
@@ -97,16 +89,10 @@ $(function () {
 					}
 					return false;
 			}
-			
-			$(checks).each(function(index, element) {			
-					if ( $(element).prop('checked') ) { 
-						    cntChecked++;
-				  }
-			});
 
-			if (cntChecked === 0) {
-					disableElement('#btn-next-tax-system', 'disabled-btn');
-			}
+			if (noCheckedQuart(checkbox) === true) {
+					  disableElement('#btn-next-tax-system', 'disabled-btn');
+			} 
 	});
 
 });
