@@ -56,9 +56,32 @@ $(function () {
 
 
 	// Кнопка Дальше
+	// Если общая система, то переход в transactions
+	// Если упрощенка и выбран хотя бы один 4-й квартал, то переход в tax-base 
+	// Если упрощенка и нет ни одного 4-го квартала, то переход в one-face 
 	$("#btn-next-tax-system").click(function() {
-		$("#tax-system-section").hide();
-		$("#transactions-section").show();
+		if ( $('#general').prop('checked') ) {
+					$("#tax-system-section").hide();
+					$("#transactions-section").show();
+		}
+
+		if ( $('#simple').prop('checked') ) {
+					var cntChecked = 0;
+					$('#tax-system-section').hide();
+
+					$('.div-quarters').each(function(index, element) {	
+							var checkbox = $(".div-quarters input:checkbox");
+							if ( $(element).data('is-four') == 'yes' && checkbox.prop('checked') ) {		
+										cntChecked++;	    
+								    $('#tax-base-section').show();	
+								    return false;	
+			    		}						  
+					});	
+
+					if ( cntChecked === 0 ) {							
+							$('#one-face-section').show();
+					}	
+		}
 	});
 
 
@@ -77,12 +100,12 @@ $(function () {
 			
 			$(checks).each(function(index, element) {			
 					if ( $(element).prop('checked') ) { 
-						  cntChecked++;
+						    cntChecked++;
 				  }
 			});
 
 			if (cntChecked === 0) {
-				disableElement('#btn-next-tax-system', 'disabled-btn');
+					disableElement('#btn-next-tax-system', 'disabled-btn');
 			}
 	});
 
