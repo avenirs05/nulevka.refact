@@ -5,11 +5,13 @@
 			$(elementId).toggleClass(className);
 	}
 
+	
 	// Делает кнопку активной
 	function enableElement (elementId, className) {
 			$(elementId).removeAttr('disabled');
 			$(elementId).toggleClass(className);
 	}
+
 
 	// Отмечен ли хотя бы 1 чекбокс из числа чекбоксов 4-го квартала
 	function noCheckedFourQuart (checkbox, wrap) {
@@ -26,6 +28,7 @@
 				 return true;
 			}
 	}
+
 
 	// Отмечен ли хотя бы 1 чекбокс из чекбоксов-кварталов
 	function noCheckedQuart (checkbox) {
