@@ -19,7 +19,7 @@ $(function () {
 	// Кнопка Назад
 	$("#btn-back-trans").click(function() {
 	    $('#transactions-section').hide();
-	    $('#tax-system-section').show();
+			$('#tax-system-section').show();
 	});
 	
 

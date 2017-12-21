@@ -107,6 +107,7 @@
         foreach ($inputIds as $value) {
             $isFour = isFour($labelTexts[$i]);
             $quarterAndText = substr($inputIds[$i], 4);
+            
             $html .= 
                 "<div data-is-four='{$isFour}' class='{$wrapClass}'>
                     <label for='{$inputIds[$i]}'>
@@ -114,6 +115,7 @@
                         {$labelTexts[$i]}
                     </label>
                 </div>";
+            
             if ($isFour =='yes') {
                 $html .= 
                     "<p class='uk-wrap' style='display: none;'><b>Как внесен уставный капитал?</b><br>

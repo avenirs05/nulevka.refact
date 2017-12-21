@@ -23,4 +23,15 @@ $(function () {
 			} 
 	});
 
+
+	// Кнопка "Дальше"
+	// Если директор и учредитель - разные лица, то переход в СЗВ. Иначе - переход в "Мы подготовим и сдадим"
+	$("#btn-next-one-face").click(function() {
+			$('#one-face-section').hide();
+
+			if ( $('#one-face-no').prop('checked') ) {
+		    $('#szv-section').show();	
+			} else $('#will-send-section').show();    
+	});
+
 });
