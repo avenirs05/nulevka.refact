@@ -8,46 +8,16 @@ $(function () {
 
 	// Если СЗВ - ответ: да
 	$("#szv-quest-yes").change(function() {
-			var monthsAndQuartals = {
-				firstQuart: { 
-						jan: 'Январь', 
-						feb: 'Февраль', 
-						mar: 'Март' 
-				},
-				secQuart: { 
-						apr: 'Апрель', 
-						may: 'Май', 
-						jun: 'Июнь' 
-				},
-				thirdQuart: { 
-						jul: 'Июль', 
-						aug: 'Август', 
-						sep: 'Сентябрь' 
-				},
-				fourthQuart: { 
-						oct: 'Октябрь', 
-						nov: 'Ноябрь', 
-						dec: 'Декабрь' 
-				}
-			}
-
 			$('#choice-period-text').show();
 				
 	    $(".div-quarters input:checkbox").each(function() {
 			    if ( $(this).prop('checked') ) {
-			    			var labelText = $(this).parent().text();
-			    			var quart = $(this).attr('id')[4];
-			    			var year = labelText.match( /20\d\d/g );
-			    			year = year[0]; 	    			
-
-
-			    			$('#label-szv-quest-no').after(
-			    				'<div>' + 
-			    					'<p>' + labelText +
-			    					'</p>' +
-
-			    				'</div>'
-			    			);
+			    			var quartText = $(this).parent().text();
+			    			var quartNum = $(this).attr('id')[4];
+			    			var year = quartText.match( /20\d\d/g );
+			    			year = year[0];    
+	
+				    		$('#label-szv-quest-no').after( szvSent(quartText, quartNum, year) );
 			    }
 	    });
 	});
