@@ -7,21 +7,22 @@ $(function () {
 	
 
 	// Если СЗВ - ответ: да
-	$("#szv-quest-yes").change(function() {			
+	$("#szv-quest-yes").on('change', function() {		
 			if ( $(this).prop('checked') ) {
 					$('#choice-period-text').show();
+					// $('#quart-months-wrap').show();
 					$('#label-szv-quest-no').after( showAllItemsOfSzvState () );
-			}		
 
+			}
 	});
 
+	
 	// Если СЗВ - ответ: нет
-	$("#szv-quest-no").change(function() {
+	$("#szv-quest-no").on('change', function() {
 			if ( $(this).prop('checked') ) {
 						$('#choice-period-text').hide();
 						$('.quart-months-wrap').hide();
-			}		
-
+			}
 	});
 
 	
@@ -30,7 +31,8 @@ $(function () {
 			$('#szv-section').hide();
 	    $('#one-face-section').show();	
 	    console.log(szvState);
-	    szvState = [];			
+	    szvState = [];	
+	    $('#quart-months-wrap').remove();		
 	    console.log(szvState);	 
 	});
 
