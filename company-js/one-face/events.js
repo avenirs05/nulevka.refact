@@ -30,7 +30,8 @@ $(function () {
 			$('#one-face-section').hide();
 
 			if ( $('#one-face-no').prop('checked') ) {
-		    $('#szv-section').show();	
+				    $('#szv-section').show();	
+				    szvSent();
 			} else $('#will-send-section').show();    
 	});
 

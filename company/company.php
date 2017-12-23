@@ -17,6 +17,7 @@
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
+    <script src="../company-js/functions.js"></script>
     <script src="../company-js/tax-system/functions.js"></script>
     <script src="../company-js/tax-system/events.js"></script>
     <script src="../company-js/transactions/events.js"></script>

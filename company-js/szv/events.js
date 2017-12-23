@@ -9,17 +9,16 @@ $(function () {
 	// Если СЗВ - ответ: да
 	$("#szv-quest-yes").change(function() {
 			$('#choice-period-text').show();
-				
-	    $(".div-quarters input:checkbox").each(function() {
-			    if ( $(this).prop('checked') ) {
-			    			var quartText = $(this).parent().text();
-			    			var quartNum = $(this).attr('id')[4];
-			    			var year = quartText.match( /20\d\d/g );
-			    			year = year[0];    
-	
-				    		$('#label-szv-quest-no').after( szvSent(quartText, quartNum, year) );
-			    }
-	    });
+			if ( $(this).prop('checked') ) {
+					$('#label-szv-quest-no').after( showAllItemsOfSzvState () );
+			}		
+
+	});
+
+	// Если СЗВ - ответ: нет
+	$("#szv-quest-no").change(function() {
+			$('#choice-period-text').hide();
+			// $('.quart-months-wrap').hide();
 	});
 
 	
