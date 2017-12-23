@@ -7,9 +7,9 @@ $(function () {
 	
 
 	// Если СЗВ - ответ: да
-	$("#szv-quest-yes").change(function() {
-			$('#choice-period-text').show();
+	$("#szv-quest-yes").change(function() {			
 			if ( $(this).prop('checked') ) {
+					$('#choice-period-text').show();
 					$('#label-szv-quest-no').after( showAllItemsOfSzvState () );
 			}		
 
@@ -17,15 +17,21 @@ $(function () {
 
 	// Если СЗВ - ответ: нет
 	$("#szv-quest-no").change(function() {
-			$('#choice-period-text').hide();
-			// $('.quart-months-wrap').hide();
+			if ( $(this).prop('checked') ) {
+						$('#choice-period-text').hide();
+						$('.quart-months-wrap').hide();
+			}		
+
 	});
 
 	
 	// Кнопка "Назад"
 	$("#btn-back-szv").click(function() {		
 			$('#szv-section').hide();
-	    $('#one-face-section').show();					 
+	    $('#one-face-section').show();	
+	    console.log(szvState);
+	    szvState = [];			
+	    console.log(szvState);	 
 	});
 
 	
