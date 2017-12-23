@@ -30,7 +30,8 @@ $(function () {
 			$('#one-face-section').hide();
 
 			if ( $('#szv-quest-yes').prop('checked') == false &&  
-					 $('#szv-quest-no').prop('checked') == false) {
+					 $('#szv-quest-no').prop('checked') == false) 
+			{
 						szvSent();
 			}
 
@@ -40,9 +41,9 @@ $(function () {
 				    if ( $('#szv-quest-yes').prop('checked') ) {
 				    			$('.quart-months-wrap').remove();
 				    			szvSent();
-				    			$('#label-szv-quest-no').after( showAllItemsOfSzvState () );
-				    }
-				   
+
+				    			$('#choice-period-text').after( showAllItemsOfSzvState () );
+				    }		   
 
 			} else $('#will-send-section').show();    
 	});

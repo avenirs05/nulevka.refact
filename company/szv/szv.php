@@ -8,10 +8,7 @@
 	    <label id="label-szv-quest-no" for="szv-quest-no">
 	    	<input id="szv-quest-no" type="radio" name="szv-quest" value="szv-quest-no">Нет
 	    </label><br>
-	    <p id="choice-period-text" style="display: none;"><i>Выберите период, за который сдавался отчет</i></p>
-
-			<?php //require_once 'choice-months.php'; ?>
-	    
+	    <p id="choice-period-text" style="display: none;"><i>Выберите период, за который сдавался отчет</i></p>	    
 	    <button id="btn-back-szv" onclick="return false;">Назад</button>
 	    <button id="btn-next-szv" style="display: none;" onclick="return false;" >Дальше</button>
 	  </div>
