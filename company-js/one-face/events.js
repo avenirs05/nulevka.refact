@@ -32,7 +32,7 @@ $(function () {
 			if ( $('#szv-quest-yes').prop('checked') == false &&  
 					 $('#szv-quest-no').prop('checked') == false) 
 			{
-						szvSent();
+						fillSzvCheckboxWrapIfSentYes();
 			}
 
 			if ( $('#one-face-no').prop('checked') ) {
@@ -40,9 +40,9 @@ $(function () {
 				    
 				    if ( $('#szv-quest-yes').prop('checked') ) {
 				    			$('.quart-months-wrap').remove();
-				    			szvSent();
+				    			fillSzvCheckboxWrapIfSentYes();
 
-				    			$('#choice-period-text').after( showAllItemsOfSzvState () );
+				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes () );
 				    }		   
 
 			} else $('#will-send-section').show();    

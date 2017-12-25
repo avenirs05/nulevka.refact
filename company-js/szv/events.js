@@ -10,7 +10,7 @@ $(function () {
 	$("#szv-quest-yes").change(function() {		
 			if ( $(this).prop('checked') ) {
 					$('#choice-period-text').show();
-					$('#choice-period-text').after( showAllItemsOfSzvState () );
+					$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes() );
 			}
 	});
 
@@ -28,7 +28,7 @@ $(function () {
 	$("#btn-back-szv").click(function() {		
 			$('#szv-section').hide();
 	    $('#one-face-section').show();	
-	    szvState = [];	
+	    szvCheckboxWrapIfSentYes = [];	
 	    $('#quart-months-wrap').remove();		
 	});
 

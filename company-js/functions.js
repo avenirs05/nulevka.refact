@@ -1,5 +1,5 @@
 	// Массив выбранных кварталов из tax-system
-	var szvState = [];
+	var szvCheckboxWrapIfSentYes = [];
 
 	// Месяцы и кварталы вообще
 	var monthsAndQuartals = {
@@ -26,10 +26,10 @@
 	}
 
 
-	// формирует массив szvState, в котором каждый его элемент - это html-wrapper 
+	// формирует массив szvCheckboxWrapIfSentYes, в котором каждый его элемент - это html-wrapper 
 	// квартала, выбранного в tax-system
 	// в зависимости от номера квартала, подставляет те или иные месяцы
-	function szvSent () {
+	function fillSzvCheckboxWrapIfSentYes () {
 			var res = null;
 	    $(".div-quarters input:checkbox").each(function(index, el) {
 			    if ( $(this).prop('checked') ) {
@@ -43,11 +43,11 @@
 	    		    res = 
 	    		    	`<div class="quart-months-wrap">
 	        			   <p>${quartText}</p>
-	        			   <label><input id="szv-sent-jan-${year}" type="checkbox" name="szv-sent-${year}">`  + monthsAndQuartals.firstQuart.jan + '</label><br>' +	    						
+	        			   <label><input id="szv-sent-jan-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.firstQuart.jan + '</label><br>' +	    						
 	    						`<label><input id="szv-sent-feb-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.firstQuart.feb + '</label><br>' +
 	    						`<label><input id="szv-sent-mar-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.firstQuart.mar + '</label><br>' +
 	        			`</div>`;
-	    			  szvState.push(res);
+	    			  szvCheckboxWrapIfSentYes.push(res);
 	    		}
 
 	    		if (quartNum == 2) {
@@ -58,7 +58,7 @@
 	    						`<label><input id="szv-sent-may-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.secQuart.may + '</label><br>' +
 	    						`<label><input id="szv-sent-jun-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.secQuart.jun + '</label><br>' +
 	        			`</div>`;
-	    			  szvState.push(res);
+	    			  szvCheckboxWrapIfSentYes.push(res);
 	    		}
 
 	    		if (quartNum == 3) {
@@ -66,10 +66,10 @@
 	    		    	`<div class="quart-months-wrap">
 	        			   <p>${quartText}</p>
 	        			   <label><input id="szv-sent-jul-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.thirdQuart.jul + '</label><br>' +
-	    						 `<label><input id="szv-sent-aug-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.thirdQuart.aug + '</label><br>' +
-	    						 `<label><input id="szv-sent-sep-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.thirdQuart.sep + '</label><br>' +
+	    						`<label><input id="szv-sent-aug-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.thirdQuart.aug + '</label><br>' +
+	    						`<label><input id="szv-sent-sep-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.thirdQuart.sep + '</label><br>' +
 	        			`</div>`;
-	    			  szvState.push(res);
+	    			  szvCheckboxWrapIfSentYes.push(res);
 	    		}
 
 	    		if (quartNum == 4) {
@@ -77,20 +77,20 @@
 	    		    	`<div class="quart-months-wrap">
 	        			   <p>${quartText}</p>
 	        			   <label><input id="szv-sent-oct-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.fourthQuart.oct + '</label><br>' +
-	    						 `<label><input id="szv-sent-nov-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.fourthQuart.nov + '</label><br>' +
-	    						 `<label><input id="szv-sent-dec-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.fourthQuart.dec + '</label><br>' +
+	    						`<label><input id="szv-sent-nov-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.fourthQuart.nov + '</label><br>' +
+	    						`<label><input id="szv-sent-dec-${year}" type="checkbox" name="szv-sent-${year}">` + monthsAndQuartals.fourthQuart.dec + '</label><br>' +
 	        			`</div>`;
-	    			  szvState.push(res);
+	    			  szvCheckboxWrapIfSentYes.push(res);
 	    		}
 	    });
 	}
 
 	// Преобразует массив выбранных кварталов из tax-system в html и возвращает его
-	function showAllItemsOfSzvState () {
+	function showAllItemsOfSzvCheckboxWrapIfSentYes () {
 			var res = '';
 
-			for (var i = 0; i < szvState.length; i++) {
-				res += szvState[i];
+			for (var i = 0; i < szvCheckboxWrapIfSentYes.length; i++) {
+				res += szvCheckboxWrapIfSentYes[i];
 			}
 
 			return res;
