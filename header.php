@@ -1,4 +1,4 @@
-<?php include_once("clickfrogru_tcp.php"); ?>
+<?php //include_once("clickfrogru_tcp.php"); ?>
 
 <div class="container-fluid header visible-md-block visible-lg-block">
     <div class="row">
