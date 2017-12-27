@@ -28,21 +28,26 @@ $(function () {
 	// Если директор и учредитель - разные лица, то переход в СЗВ. Иначе - переход в "Мы подготовим и сдадим"
 	$("#btn-next-one-face").click(function() {
 			$('#one-face-section').hide();
-			
+			// если попали в первый раз в секцию сзв
 			if ( $('#szv-quest-yes').prop('checked') == false &&  
 					 $('#szv-quest-no').prop('checked') == false) 
-			{
-						fillSzvCheckboxWrapIfSentYes();
+			{			
+						// формируем массив-html чекбоксов и их оберток, исходя из выбранных периодов в tax-system
+						fillSzvCheckboxWrapIfSentYes(); 
 			}
 
 			if ( $('#one-face-no').prop('checked') ) {
-				    $('#szv-section').show();	
-				    
+				    $('#szv-section').show();			    
+
 				    if ( $('#szv-quest-yes').prop('checked') ) {
+
 				    			$('.quart-months-wrap').remove();
 				    			fillSzvCheckboxWrapIfSentYes();
-				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes () );
+				    			// отображаем периоды, когда отчет сдавался
+				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes() );
+				    			makeCheckedSzvIfBtnBack ();		    			
 				    }
+
 			} else $('#will-send-section').show();    
 	});
 

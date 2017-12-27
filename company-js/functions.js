@@ -103,3 +103,19 @@
 			return res;
 	}
 
+
+	// Если сзв-да и юзер отметил периоды, отметит эти периоды
+	// При btn-back из сзв, обертка периодов уничтожается, но id-шники
+	// инпутов сохраняются в массиве szvCheckboxCheckedByUser
+	function makeCheckedSzvIfBtnBack () {
+			$('.quart-months-wrap input').each(function() {
+					var inputId = $(this).attr('id');
+												
+					if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
+								$(this).prop('checked', true);
+					} 
+			});	
+	}
+
+
+

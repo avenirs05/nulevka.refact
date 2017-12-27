@@ -1,16 +1,18 @@
 $(function () {
 
-	// Появление кнопки "Дальше". Если СЗВ - ответ: нет
+	// Появление кнопки "Дальше".
 	$("#szv-quest-no").change(function() {
 	    $('#btn-next-szv').show();	     
 	});
 	
 
 	// Если СЗВ - ответ: да
-	$("#szv-quest-yes").change(function() {		
+	$("#szv-quest-yes").change(function() {
+			$('#btn-next-szv').show();		
 			if ( $(this).prop('checked') ) {
 					$('#choice-period-text').show();
 					$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes() );
+					makeCheckedSzvIfBtnBack();
 			}
 	});
 
