@@ -28,7 +28,7 @@ $(function () {
 	// Если директор и учредитель - разные лица, то переход в СЗВ. Иначе - переход в "Мы подготовим и сдадим"
 	$("#btn-next-one-face").click(function() {
 			$('#one-face-section').hide();
-
+			
 			if ( $('#szv-quest-yes').prop('checked') == false &&  
 					 $('#szv-quest-no').prop('checked') == false) 
 			{
@@ -41,10 +41,8 @@ $(function () {
 				    if ( $('#szv-quest-yes').prop('checked') ) {
 				    			$('.quart-months-wrap').remove();
 				    			fillSzvCheckboxWrapIfSentYes();
-
 				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes () );
-				    }		   
-
+				    }
 			} else $('#will-send-section').show();    
 	});
 
