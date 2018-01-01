@@ -1,4 +1,3 @@
-
 	// Делает кнопку неактивной
 	function disableElement (elementId, className) {
 			$(elementId).attr('disabled', 'disabled');

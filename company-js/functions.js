@@ -32,11 +32,9 @@
 	}
 
 
-
-
-	// формирует массив szvCheckboxWrapIfSentYes, в котором каждый его элемент - это html-wrapper 
+	// Формирует массив szvCheckboxWrapIfSentYes, в котором каждый его элемент - это html-wrapper 
 	// квартала, выбранного в tax-system
-	// в зависимости от номера квартала, подставляет те или иные месяцы
+	// В зависимости от номера квартала, подставляет те или иные месяцы
 	function fillSzvCheckboxWrapIfSentYes () {
 		var res = null;
     $(".div-quarters input:checkbox").each(function(index, el) {
@@ -46,6 +44,7 @@
 		    			var year = quartText.match( /20\d\d/g );
 		    			year = year[0];
 		    			var quartMonthsWrapHtml = '<div class="quart-months-wrap">';
+		    			var endQuartMonthsWrapHtml = '</div>';
 		    			var labelInput = '<label><input id="szv-sent-';
 		    			var checkboxAndName = ' type="checkbox" name="szv-sent-';
 		    }
@@ -55,10 +54,10 @@
     		    res = 
     		    	quartMonthsWrapHtml + 
     		    		'<p>' + quartText + '</p>' + 
-    		    		labelInput + 'jan-' + year + '"' + checkboxAndName + 'jan-' + `${year}` + '">' + quarters.first.jan + '</label><br>' +	    						
-    						labelInput + 'feb-' + year + '"' + checkboxAndName + 'feb-' + `${year}` + '">' + quarters.first.feb + '</label><br>' +
-    						labelInput + 'mar-' + year + '"' + checkboxAndName + 'mar-' + `${year}` + '">' + quarters.first.mar + '</label><br>' +
-        			'</div>';
+    		    		labelInput + 'jan-' + year + '"' + checkboxAndName + 'jan-' + year + '">' + quarters.first.jan + '</label><br>' +	    						
+    						labelInput + 'feb-' + year + '"' + checkboxAndName + 'feb-' + year + '">' + quarters.first.feb + '</label><br>' +
+    						labelInput + 'mar-' + year + '"' + checkboxAndName + 'mar-' + year + '">' + quarters.first.mar + '</label><br>' +
+        			endQuartMonthsWrapHtml;
     			  szvCheckboxWrapIfSentYes.push(res);
     				break;	    		
 
@@ -66,10 +65,10 @@
     		    res = 
     		    	quartMonthsWrapHtml + 
     		    		'<p>' + quartText + '</p>' +
-        			  labelInput + 'apr-' + year + '"' + checkboxAndName + 'apr-' + `${year}` + '">' + quarters.second.apr + '</label><br>' +
-    						labelInput + 'may-' + year + '"' + checkboxAndName + 'may-' + `${year}` + '">' + quarters.second.may + '</label><br>' +
-    						labelInput + 'jun-' + year + '"' + checkboxAndName + 'jun-' + `${year}` + '">' + quarters.second.jun + '</label><br>' +
-        			'</div>';
+        			  labelInput + 'apr-' + year + '"' + checkboxAndName + 'apr-' + year + '">' + quarters.second.apr + '</label><br>' +
+    						labelInput + 'may-' + year + '"' + checkboxAndName + 'may-' + year + '">' + quarters.second.may + '</label><br>' +
+    						labelInput + 'jun-' + year + '"' + checkboxAndName + 'jun-' + year + '">' + quarters.second.jun + '</label><br>' +
+        			endQuartMonthsWrapHtml;
     			  szvCheckboxWrapIfSentYes.push(res);
     			  break;	    		
 
@@ -77,10 +76,10 @@
     		    res = 
     		    	quartMonthsWrapHtml + 
     		    		'<p>' + quartText + '</p>' +
-        			  labelInput + 'jul-' + year + '"' + checkboxAndName + 'jul-' + `${year}` + '">' + quarters.third.jul + '</label><br>' +
-    						labelInput + 'aug-' + year + '"' + checkboxAndName + 'aug-' + `${year}` + '">' + quarters.third.aug + '</label><br>' +
-    						labelInput + 'sep-' + year + '"' + checkboxAndName + 'sep-' + `${year}` + '">' + quarters.third.sep + '</label><br>' +
-        			'</div>';
+        			  labelInput + 'jul-' + year + '"' + checkboxAndName + 'jul-' + year + '">' + quarters.third.jul + '</label><br>' +
+    						labelInput + 'aug-' + year + '"' + checkboxAndName + 'aug-' + year + '">' + quarters.third.aug + '</label><br>' +
+    						labelInput + 'sep-' + year + '"' + checkboxAndName + 'sep-' + year + '">' + quarters.third.sep + '</label><br>' +
+        			endQuartMonthsWrapHtml;
     			  szvCheckboxWrapIfSentYes.push(res);
     			  break;	    		
 
@@ -88,10 +87,10 @@
     		    res = 
     		    	quartMonthsWrapHtml + 
     		    		'<p>' + quartText + '</p>' +
-    		    		labelInput + 'oct-' + year + '"' + checkboxAndName + 'oct-' + `${year}` + '">' + quarters.fourth.oct + '</label><br>' +
-    						labelInput + 'nov-' + year + '"' + checkboxAndName + 'nov-' + `${year}` + '">' + quarters.fourth.nov + '</label><br>' +
-    						labelInput + 'dec-' + year + '"' + checkboxAndName + 'dec-' + `${year}` + '">' + quarters.fourth.dec + '</label><br>' +
-        			'</div>';
+    		    		labelInput + 'oct-' + year + '"' + checkboxAndName + 'oct-' + year + '">' + quarters.fourth.oct + '</label><br>' +
+    						labelInput + 'nov-' + year + '"' + checkboxAndName + 'nov-' + year + '">' + quarters.fourth.nov + '</label><br>' +
+    						labelInput + 'dec-' + year + '"' + checkboxAndName + 'dec-' + year + '">' + quarters.fourth.dec + '</label><br>' +
+        			endQuartMonthsWrapHtml;
     			  szvCheckboxWrapIfSentYes.push(res);
     			  break;	    		
     		}

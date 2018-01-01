@@ -20,6 +20,8 @@
       <div style="display: none;">
         <label for='szv-m'><input id='szv-m' type='checkbox' name='szv-m' checked><strong>СЗВ-М</strong></label>
       </div>
+
+      <button id="btn-back-will-send" onclick="return false;">Назад</button>
     </div>
   </div>
 </div>
