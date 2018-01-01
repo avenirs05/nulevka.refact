@@ -4,19 +4,17 @@
     // Делает кнопку неактивной
     function disableElement (elementId, className) {
         $(elementId).attr('disabled', 'disabled');
-        $(elementId).toggleClass(className);
+        $(elementId).addClass(className);
+        // $(elementId).toggleClass(className);
     }
 
 
     // Делает кнопку активной
     function enableElement (elementId, className) {
         $(elementId).removeAttr('disabled');
-        $(elementId).toggleClass(className);
+        $(elementId).removeClass(className);
+        //$(elementId).toggleClass(className);
     }
-
-    // function enableDisableElement (id) {
-
-    // }
 
 
     // Отмечен ли хотя бы 1 чекбокс из числа чекбоксов 4-го квартала

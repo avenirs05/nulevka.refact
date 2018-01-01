@@ -1,17 +1,11 @@
 $(function () {
-
-	// Делаем кнопку "Дальше" неактивной по умолчанию
-	disableElement('#btn-next-tax-system', 'disabled-btn');
-
 	
 	// Выберите систему налогообложения
 	$("#simple").change(function () {
-			$('#years-wrap input:checkbox').each(function(indx, el) {
-					if ( $(el).prop('checked') ) {
-								enableElement('#btn-next-tax-system', 'disabled-btn');
-					}
-			});
-
+			if ( $(this).prop('checked') ) {
+						disableElement('#btn-next-tax-system', 'disabled-btn');
+			}
+			
 			$('#choice-quarters').hide();
 			$(this).parent().after( $('#years-wrap') );
 	    $('#years-wrap').show();
@@ -20,7 +14,7 @@ $(function () {
 
 
 	$("#general").change(function () {
-			if ( $("#general").prop('checked') ) {
+			if ( $(this).prop('checked') ) {
 						enableElement('#btn-next-tax-system', 'disabled-btn');
 			}
 
@@ -99,6 +93,8 @@ $(function () {
 			}
 	});
 
+
+
 	// Если Упрощенная система отмечена
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
@@ -117,6 +113,8 @@ $(function () {
 					  disableElement('#btn-next-tax-system', 'disabled-btn');
 			} 
 	});
+
+
 
 	// Если Общая система отмечена
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
