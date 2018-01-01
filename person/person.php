@@ -19,12 +19,9 @@
 
     <script src="../functions.js"></script>
     <script src="../events-general.js"></script>
-    <script src="../company-js/tax-system/events.js"></script>
-    <script src="../company-js/transactions/events.js"></script>
-    <script src="../company-js/one-face/events.js"></script>
-    <script src="../company-js/tax-base/events.js"></script>
-    <script src="../company-js/szv/events.js"></script>
-    <script src="../company-js/will-send/events.js"></script>
+    <script src="../person-js/tax-system/events.js"></script>
+    <script src="../person-js/tax-base/events.js"></script>
+    <script src="../person-js/will-send/events.js"></script>
 
     <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45030163 = new Ya.Metrika({ id:45030163, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45030163" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
@@ -39,10 +36,7 @@
     <?php require_once '../modals.php'; ?>
     <?php require_once '../functions.php'; ?>  
     <?php require_once 'tax-system/tax-system.php'; ?>
-    <?php require_once 'transactions/transactions.php'; ?>
-    <?php require_once 'one-face/one-face.php'; ?>
     <?php require_once 'tax-base/tax-base.php'; ?>
-    <?php require_once 'szv/szv.php'; ?>
     <?php require_once 'will-send/will-send.php'; ?>
 </body>
 </html>

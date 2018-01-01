@@ -16,12 +16,7 @@
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="functions-company.js"></script>
-    <script src="functions-person.js"></script>
-    <script src="functions-general.js"></script>
-<!--     <script src="events-company.js"></script>
-    <script src="events-person.js"></script>
-    <script src="events-general.js"></script> -->
+    <script src="events-general.js"></script>
 
     <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45030163 = new Ya.Metrika({ id:45030163, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45030163" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 </head>
@@ -51,8 +46,8 @@
         </div> 
         <div class="col-md-7">
             <div class="ipad">
-                <a href="company/company.php" target="_blank"><button class="btn-inside-ipad-1">Сдать нулевку по ООО</button></a>
-                <a href="person.php" target="_blank"><button class="btn-inside-ipad-1 btn-inside-ipad-2">Составить нулевку для ИП</button></a>
+                <a href="company/company.php"><button class="btn-inside-ipad-1">Сдать нулевку по ООО</button></a>
+                <a href="person/person.php"><button class="btn-inside-ipad-1 btn-inside-ipad-2">Составить нулевку для ИП</button></a>
                 <a href="http://mybuh.online/" target="_blank"><button class="btn-inside-ipad-1 btn-inside-ipad-3">У меня не нулевка!</button></a>
             </div>         
         </div>
@@ -310,5 +305,5 @@
         </div>
     </div>
 </div>
-<!-- test -->
+
 <?php require_once 'footer.php'; ?>

@@ -7,15 +7,17 @@
           
           <?php 
               $taxSystem = array(
-                'general' => 'Общая', 
-                'simple'  => 'Упрощенная', 
-                'envd'    => 'ЕНВД', 
+                'simple'   => 'Упрощенная',
+                'general'  => 'Общая',                 
+                'envd'     => 'ЕНВД',
+                'patent'   => 'Патент', 
                 'not-know' => 'Не знаю'
               );          
               
               echo taxSystemList($taxSystem, 'tax-system'); 
                  
-              require_once 'choice-quarters.php'; 
+              require_once 'years.php'; 
+              require_once 'choice-quarters.php';           
           ?>
           
           <button id="btn-next-tax-system" style="display: none;" onclick="return false;">Дальше</button>
@@ -25,4 +27,4 @@
   </div>
 </div>
 
-<?php getInputIds($anotherQuartersAttr); ?>
+<?php getInputIdsIp($years); ?>
