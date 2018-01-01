@@ -14,6 +14,10 @@
         $(elementId).toggleClass(className);
     }
 
+    // function enableDisableElement (id) {
+
+    // }
+
 
     // Отмечен ли хотя бы 1 чекбокс из числа чекбоксов 4-го квартала
     function noCheckedFourQuart (checkbox, wrap) {
@@ -171,11 +175,11 @@
     // инпутов сохраняются в массиве szvCheckboxCheckedByUser
     function makeCheckedSzvIfBtnBack () {
         $('.quart-months-wrap input').each(function() {
-                var inputId = $(this).attr('id');
-                                            
-                if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
-                            $(this).prop('checked', true);
-                } 
+            var inputId = $(this).attr('id');
+                                        
+            if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
+                        $(this).prop('checked', true);
+            } 
         }); 
     }
 

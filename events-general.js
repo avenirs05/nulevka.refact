@@ -20,8 +20,6 @@ $(function () {
 
 	$('#btn-get-bonus-mob').click(function() {
 		$('#modal-for-accountants-mob').modal('show');
-	});
-
-	
+	});	
 
 });

@@ -1,14 +1,29 @@
 $(function () {
 
+	// Делаем кнопку "Дальше" неактивной по умолчанию
+	disableElement('#btn-next-tax-system', 'disabled-btn');
+
+	
 	// Выберите систему налогообложения
 	$("#simple").change(function () {
+			$('#years-wrap input:checkbox').each(function(indx, el) {
+					if ( $(el).prop('checked') ) {
+								enableElement('#btn-next-tax-system', 'disabled-btn');
+					}
+			});
+
 			$('#choice-quarters').hide();
 			$(this).parent().after( $('#years-wrap') );
 	    $('#years-wrap').show();
 	    $('#btn-next-tax-system').show();
 	});
 
+
 	$("#general").change(function () {
+			if ( $("#general").prop('checked') ) {
+						enableElement('#btn-next-tax-system', 'disabled-btn');
+			}
+
 			$('#years-wrap').hide();
 			$('.uk-wrap').hide();
 			$(this).parent().after( $('#choice-quarters') );
@@ -16,6 +31,7 @@ $(function () {
 	    $('#btn-next-tax-system').show();
 	});
 
+	
 	$("#envd").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
@@ -23,6 +39,7 @@ $(function () {
 	    $('#btn-next-tax-system').hide();
 	});    
 
+	
 	$("#patent").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
@@ -30,6 +47,7 @@ $(function () {
 	    $('#btn-next-tax-system').hide();
 	});  
 
+	
 	$("#not-know").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
@@ -81,9 +99,28 @@ $(function () {
 			}
 	});
 
-
+	// Если Упрощенная система отмечена
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
+	$("#years-wrap input:checkbox").change(function() {
+
+			var checkbox = '#years-wrap input:checkbox';
+
+			if ( $(this).prop('checked') ) {
+					if ( $('#btn-next-tax-system').hasClass('disabled-btn') ) {
+								enableElement('#btn-next-tax-system', 'disabled-btn');
+					}
+					return false;
+			}
+
+			if (noCheckedQuart(checkbox) === true) {						
+					  disableElement('#btn-next-tax-system', 'disabled-btn');
+			} 
+	});
+
+	// Если Общая система отмечена
+	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
+	// Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
 	$(".div-quarters input:checkbox").change(function() {
 			var checkbox = '.div-quarters input:checkbox';
 
