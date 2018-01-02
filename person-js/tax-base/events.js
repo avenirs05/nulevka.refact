@@ -14,7 +14,7 @@ $(function () {
 	// Кнопка "Дальше"
 	$("#btn-next-base").click(function() {
 	    $('#tax-base-section').hide();
-	    $('#one-face-section').show();
+	    $('#will-send-section').show();
 	});
 
 });

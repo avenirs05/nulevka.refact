@@ -2,9 +2,9 @@ $(function () {
 	
 	// Выберите систему налогообложения
 	$("#simple").change(function () {
-			if ( $(this).prop('checked') ) {
-						disableElement('#btn-next-tax-system', 'disabled-btn');
-			}
+			if ( noCheckedQuart('#years-wrap input:checkbox') ) {						
+					  disableElement('#btn-next-tax-system', 'disabled-btn');
+			} else enableElement('#btn-next-tax-system', 'disabled-btn');
 			
 			$('#choice-quarters').hide();
 			$(this).parent().after( $('#years-wrap') );
@@ -14,9 +14,9 @@ $(function () {
 
 
 	$("#general").change(function () {
-			if ( $(this).prop('checked') ) {
-						enableElement('#btn-next-tax-system', 'disabled-btn');
-			}
+			if ( noCheckedQuart('#choice-quarters input:checkbox') ) {						
+					  disableElement('#btn-next-tax-system', 'disabled-btn');
+			} else enableElement('#btn-next-tax-system', 'disabled-btn');
 
 			$('#years-wrap').hide();
 			$('.uk-wrap').hide();
@@ -78,18 +78,14 @@ $(function () {
 	$("#btn-next-tax-system").click(function() {
 			var checkbox = '.div-quarters input:checkbox';
 			var wrap = '.div-quarters';
+			$('#tax-system-section').hide();
 
-			if ( $('#general').prop('checked') ) {
-						$('#tax-system-section').hide();
-						$('#transactions-section').show();
+			if ( $('#general').prop('checked') ) {						
+						$('#will-send-section').show();
 			}
 
 			if ( $('#simple').prop('checked') ) {
-						$('#tax-system-section').hide();
-
-						if ( noCheckedFourQuart(checkbox, wrap) === true ) {
-									$('#one-face-section').show();
-						} else $('#tax-base-section').show();
+						$('#tax-base-section').show();
 			}
 	});
 
@@ -98,21 +94,11 @@ $(function () {
 	// Если Упрощенная система отмечена
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
-	$("#years-wrap input:checkbox").change(function() {
-
-			var checkbox = '#years-wrap input:checkbox';
-
-			if ( $(this).prop('checked') ) {
-					if ( $('#btn-next-tax-system').hasClass('disabled-btn') ) {
-								enableElement('#btn-next-tax-system', 'disabled-btn');
-					}
-					return false;
-			}
-
-			if (noCheckedQuart(checkbox) === true) {						
-					  disableElement('#btn-next-tax-system', 'disabled-btn');
-			} 
-	});
+  $("#years-wrap input:checkbox").change(function() {
+  		if ( noCheckedQuart('#years-wrap input:checkbox') ) {						
+  				  disableElement('#btn-next-tax-system', 'disabled-btn');
+  		} else enableElement('#btn-next-tax-system', 'disabled-btn');
+  });
 
 
 
@@ -120,18 +106,10 @@ $(function () {
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
 	// Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
 	$(".div-quarters input:checkbox").change(function() {
-			var checkbox = '.div-quarters input:checkbox';
-
-			if ( $(this).prop('checked') ) {
-					if ( $('#btn-next-tax-system').hasClass('disabled-btn') ) {
-								enableElement('#btn-next-tax-system', 'disabled-btn');
-					}
-					return false;
-			}
-
-			if (noCheckedQuart(checkbox) === true) {
+			if ( noCheckedQuart('.div-quarters input:checkbox') ) {						
 					  disableElement('#btn-next-tax-system', 'disabled-btn');
-			} 
+			} else enableElement('#btn-next-tax-system', 'disabled-btn');
+
 	});
 
 });

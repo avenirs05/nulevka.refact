@@ -1,7 +1,7 @@
 ﻿<div id="will-send-section" style="display: none" class="container-fluid questions-wrapper">
   <div class="row">
     <div class="col-md-12">
-      <span id="span-we-will-send">Мы за Вас подготовим</span>
+      <span id="span-we-will-send">Мы за Вас подготовим и отправим на email</span>
       <div style="display: none;">
         <label for='decl-nds'><input id='decl-nds' type='checkbox' name='decl-nds' checked><strong>Налоговая декларация по НДС</strong></label>
       </div>
