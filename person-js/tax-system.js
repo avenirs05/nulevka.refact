@@ -1,6 +1,9 @@
 $(function () {
 	
 	// Выберите систему налогообложения
+	// ---------------------------------
+
+	// Выбрана Упрощенка
 	$("#simple").change(function () {
 			if ( noCheckedQuart('#years-wrap input:checkbox') ) {						
 					  disableElement('#btn-next-tax-system', 'disabled-btn');
@@ -13,6 +16,7 @@ $(function () {
 	});
 
 
+	// Выбрана Общая
 	$("#general").change(function () {
 			if ( noCheckedQuart('#choice-quarters input:checkbox') ) {						
 					  disableElement('#btn-next-tax-system', 'disabled-btn');
@@ -26,6 +30,7 @@ $(function () {
 	});
 
 	
+	// Выбрана ЕНВД
 	$("#envd").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
@@ -34,6 +39,7 @@ $(function () {
 	});    
 
 	
+	// Выбран Патент
 	$("#patent").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
@@ -42,15 +48,19 @@ $(function () {
 	});  
 
 	
+	// Выбрано "Я не знаю"
 	$("#not-know").change(function () {
 	    $('#years-wrap').hide();
 	    $('#choice-quarters').hide();
 	    $('#modal-not-know').modal('show');
 	    $('#btn-next-tax-system').hide();
 	});
+
+	// End Выберите систему налогообложения
+	// -----------------------------------
 	
 
-	// Другие периоды	
+	// Другие периоды	(появлются, исчезают)
 	$("#another-quarters-text").click(function() {		
 		if ( $('#another-quarters-wrap').css('display') == "none" ) {
 	          $('#another-quarters-wrap').show(); 
@@ -81,7 +91,7 @@ $(function () {
 			$('#tax-system-section').hide();
 
 			if ( $('#general').prop('checked') ) {						
-						$('#will-send-section').show();
+						$('#transactions-section').show();
 			}
 
 			if ( $('#simple').prop('checked') ) {

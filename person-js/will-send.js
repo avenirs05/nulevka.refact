@@ -4,7 +4,7 @@ $(function () {
 				$('#will-send-section').hide();
 
 				if ( $('#general').prop('checked') )	{
-						$('#tax-system-section').show();
+						$('#transactions-section').show();
 				} 
 
 				if ( $('#simple').prop('checked') )	{

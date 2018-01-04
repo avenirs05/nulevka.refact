@@ -181,6 +181,30 @@
         }); 
     }
 
+    function showReportsIfGeneral () {
+        var checkbox = '.div-quarters input:checkbox';
+        var wrap = '.div-quarters';
+        
+        if ( $('#general').prop('checked') ) {
+                if ( $('#trans-yes').prop('checked') ) {
+                            $('#decl-nds-wrap').show();
+                            $('#decl-profit-wrap').show();
+                } else {
+                    $('#decl-one-wrap').show();
+                }
+
+                $('#count-ins-wrap').show(); 
+                $('#count-fss-wrap').show(); 
+                $('#szv-m-wrap').show(); 
+
+                if ( !(noCheckedFourQuart(checkbox, wrap) ) ) {
+                        $('#buh-rep-ifns-wrap').show(); 
+                        $('#buh-rep-stat-wrap').show(); 
+                        $('#workers-cnt-wrap').show(); 
+                }                
+        }
+    }
+
     /* End Company - Разное */
     // -------------------------------------------------------------------------------------
 

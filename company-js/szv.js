@@ -37,8 +37,47 @@ $(function () {
 	
 	// Кнопка Дальше
 	$("#btn-next-szv").click(function() {		
+			// var checkbox = '.div-quarters input:checkbox';
+			// var wrap = '.div-quarters';
+
 			$('#szv-section').hide();
-	    $('#will-send-section').show();					 
+	    $('#will-send-section').show();	
+
+	    showReportsIfGeneral();
+	    // if ( $('#general').prop('checked') ) {
+	    // 			if ( $('#trans-yes').prop('checked') ) {
+	    // 						$('#decl-nds-wrap').show();
+	    // 						$('#decl-profit-wrap').show();
+	    // 			} else {
+	    // 				$('#decl-one-wrap').show();
+	    // 			}
+
+	    // 			$('#count-ins-wrap').show(); 
+	    // 			$('#count-fss-wrap').show(); 
+	    // 			$('#szv-m-wrap').show(); 
+
+	    // 			if ( !(noCheckedFourQuart(checkbox, wrap) ) ) {
+	    // 					$('#buh-rep-ifns-wrap').show(); 
+	    // 					$('#buh-rep-stat-wrap').show(); 
+	    // 					$('#workers-cnt-wrap').show(); 
+	    // 			}				 
+	    // }
+
+	    if ( $('#simple').prop('checked') ) {
+	    			if ( !(noCheckedFourQuart(checkbox, wrap) ) ) {
+	    						  $('#decl-usn-wrap').show();
+	    			}	
+	    			
+	    			$('#count-ins-wrap').show(); 
+	    			$('#count-fss-wrap').show(); 	
+	    			$('#szv-m-wrap').show();
+	    			
+	    			if ( !(noCheckedFourQuart(checkbox, wrap) ) ) {
+    						  $('#buh-rep-ifns-wrap').show(); 
+    						  $('#buh-rep-stat-wrap').show(); 
+    						  $('#workers-cnt-wrap').show(); 	
+	    			}	
+	    }
 	});
 
 	

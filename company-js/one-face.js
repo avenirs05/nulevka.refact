@@ -17,7 +17,7 @@ $(function () {
 	    }
 
 	    if ( $("#simple").prop('checked') ) {
-						 if ( noCheckedFourQuart(checkbox, wrap) === true ) {
+						 if ( noCheckedFourQuart(checkbox, wrap) ) {
 						  		  $('#tax-system-section').show();
 						 } else $('#tax-base-section').show();
 			} 
@@ -48,7 +48,13 @@ $(function () {
 				    			makeCheckedSzvIfBtnBack ();		    			
 				    }
 
-			} else $('#will-send-section').show();    
+			} 
+
+			if ( $('#one-face-yes').prop('checked') ) {
+							$('#will-send-section').show();							 
+			}
+
+  
 	});
 
 });
