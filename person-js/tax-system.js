@@ -68,19 +68,6 @@ $(function () {
 	});
 
 
-	// Поведение самого первого чекбокса
-	$("#first-quarter-label input:checkbox").change(function() {	
-			var howPutUk = $(this).parent().parent().next();
-			var wrap = $(this).parent().parent();
-			
-			if (wrap.data('is-four') == 'yes') {
-					if ( $(this).prop('checked') ) {
-						  howPutUk.show(); 
-					} else howPutUk.hide();
-			}	
-	});
-
-
 	// Кнопка Дальше
 	// Если общая система, то переход в transactions
 	// Если упрощенка и нет ни одного 4-го квартала, то переход в one-face

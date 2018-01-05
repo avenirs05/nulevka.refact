@@ -18,17 +18,17 @@
 
 
     // Отмечен ли хотя бы 1 чекбокс из числа чекбоксов 4-го квартала
-    function noCheckedFourQuart (checkbox, wrap) {
+    function noCheckedFourQuart () {
         var cntChecked = 0;
 
-        $(wrap).each(function(index, wrap) {    
-                if ( $(wrap).data('is-four') == 'yes' && $(checkbox).prop('checked') ) {        
+        $('#choice-quarters input:checkbox').each(function(index, input) {  
+                if ( $(input).parent().parent().data('is-four') == 'yes' && $(input).prop('checked') ) {        
                             cntChecked++;   
                             return false; 
                 }                         
         }); 
 
-        if ( cntChecked === 0 ) {
+        if (cntChecked === 0) {
              return true;
         }
     }
@@ -181,27 +181,75 @@
         }); 
     }
 
-    function showReportsIfGeneral () {
-        var checkbox = '.div-quarters input:checkbox';
-        var wrap = '.div-quarters';
-        
+    // Если ООО. 
+    // Отображает отчеты в will-send в зависимости от параметров, данных пользователем.
+    // Если сзв-экран не показывался, то сзв-отчета не будет.
+    function showReportsWillSendCompany (szv) {
+        var checkbox = '#choice-quarters input:checkbox';
+        // var wrap = '.div-quarters';
+
+        $('#will-send-section').show(); 
+
         if ( $('#general').prop('checked') ) {
                 if ( $('#trans-yes').prop('checked') ) {
-                            $('#decl-nds-wrap').show();
-                            $('#decl-profit-wrap').show();
+                        $('#decl-nds-wrap').show();
+                        $('#decl-profit-wrap').show();
                 } else {
                     $('#decl-one-wrap').show();
                 }
 
                 $('#count-ins-wrap').show(); 
                 $('#count-fss-wrap').show(); 
-                $('#szv-m-wrap').show(); 
 
-                if ( !(noCheckedFourQuart(checkbox, wrap) ) ) {
+                if (szv === true) {
+                  $('#szv-m-wrap').show();
+                }                 
+
+                if ( !(noCheckedFourQuart() ) ) {
                         $('#buh-rep-ifns-wrap').show(); 
                         $('#buh-rep-stat-wrap').show(); 
                         $('#workers-cnt-wrap').show(); 
                 }                
+        }
+
+        if ( $('#simple').prop('checked') ) {
+                if ( !(noCheckedFourQuart() ) ) {
+                        $('#decl-usn-wrap').show();
+                }   
+                
+                $('#count-ins-wrap').show(); 
+                $('#count-fss-wrap').show();    
+                
+                if (szv === true) {
+                  $('#szv-m-wrap').show();
+                } 
+                
+                if ( !(noCheckedFourQuart() ) ) {
+                      $('#buh-rep-ifns-wrap').show(); 
+                      $('#buh-rep-stat-wrap').show(); 
+                      $('#workers-cnt-wrap').show();    
+                }   
+        }
+    }
+
+
+    // Отображает отчеты в will-send в зависимости от параметров, данных пользователем
+    // Если сзв-экран не показывался, то сзв-отчета не будет.
+    function showReportsWillSendIp () {
+        if ( $('#general').prop('checked') ) { 
+              if ( $('#trans-yes').prop('checked') ) {
+                      $('#decl-nds-wrap').show();
+              } else {
+                  $('#decl-one-wrap').show();
+              }
+
+              if ( !(noCheckedFourQuart() ) ) {
+                    $('#decl-ndfl-wrap').show(); 
+              }
+        }
+
+        if ( $('#simple').prop('checked') ) { 
+              $('#decl-usn-wrap').show();
         }
     }
 

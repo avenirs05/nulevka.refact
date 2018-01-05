@@ -71,7 +71,7 @@ $(function () {
 			if ( $('#simple').prop('checked') ) {
 						$('#tax-system-section').hide();
 
-						if ( noCheckedFourQuart(checkbox, wrap) === true ) {
+						if ( noCheckedFourQuart() === true ) {
 									$('#one-face-section').show();
 						} else $('#tax-base-section').show();
 			}
@@ -81,6 +81,7 @@ $(function () {
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
 	$(".div-quarters input:checkbox").change(function() {
+			console.log('jjj');
 			var checkbox = '.div-quarters input:checkbox';
 
 			if ( $(this).prop('checked') ) {
@@ -90,7 +91,7 @@ $(function () {
 					return false;
 			}
 
-			if (noCheckedQuart(checkbox) === true) {
+			if (noCheckedQuart('.div-quarters input:checkbox') === true) {
 					  disableElement('#btn-next-tax-system', 'disabled-btn');
 			} 
 	});
