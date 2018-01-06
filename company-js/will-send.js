@@ -15,8 +15,16 @@ $(function () {
 				$('#will-send-section').hide();
 
 				if ( $('#one-face-yes').prop('checked')  ) {
-						$('#one-face-section').show();
+							$('#one-face-section').show();
 				} else $('#szv-section').show();
+
+				// очистить массив выбранных кварталов в tax-system
+				checkedQuartersTaxSystem = []; 
+				checkedYearsTaxSystem = []; 
+
+				// удалить итоговые кварталы-элементы из will-send
+				$('.quarters-will-send').remove();
+				$('.years-will-send').remove();
 		});
 
 });

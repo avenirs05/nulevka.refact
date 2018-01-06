@@ -5,11 +5,9 @@ $(function () {
 	    $('#btn-next-one-face').show();	     
 	});
 
+
 	// Кнопка "Назад"
-	$("#btn-back-one-face").click(function() {
-			var checkbox = '#choice-quarters input:checkbox';
-			// var wrap = '.div-quarters';
-			
+	$("#btn-back-one-face").click(function() {		
 			$('#one-face-section').hide();
 
 	    if ( $("#general").prop('checked') ) {
@@ -51,8 +49,7 @@ $(function () {
 			} 
 
 			if ( $('#one-face-yes').prop('checked') ) {
-							$('#will-send-section').show();			
-							showReportsWillSendCompany(false); 				 
+							showReportsWillSendCompany(); 				 
 			}  
 	});
 

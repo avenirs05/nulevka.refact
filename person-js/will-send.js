@@ -15,6 +15,15 @@ $(function () {
 				if ( $('#simple').prop('checked') )	{
 						$('#tax-base-section').show();
 				}
+
+				// очистить массив выбранных кварталов в tax-system
+				checkedQuartersTaxSystem = []; 
+				checkedYearsTaxSystem = []; 
+
+
+				// удалить итоговые кварталы-элементы из will-send
+				$('.quarters-will-send').remove();
+				$('.years-will-send').remove();
 		});
 
 });

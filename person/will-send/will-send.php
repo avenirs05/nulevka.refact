@@ -18,19 +18,8 @@
         </label>
       </div>
       
-      <div style="display: none;" id="decl-usn-wrap">
-        <label>
-          <input id='decl-usn' type='checkbox' name='decl-usn' checked>
-          <strong>Налоговая декларация по УСН за n-й год</strong>
-        </label>
-      </div>
-      
-      <div style="display: none;" id="decl-ndfl-wrap">
-        <label>
-          <input id='decl-ndfl' type='checkbox' name='decl-ndfl' checked>
-          <strong>Налоговая декларация 3-НДФЛ за n-й год</strong>
-        </label>
-      </div>
+      <div style="display: none;" id="decl-usn-wrap"></div>      
+      <div style="display: none;" id="decl-ndfl-wrap"></div>
 
       <button id="btn-back-will-send" onclick="return false;">Назад</button>
     

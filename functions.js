@@ -1,3 +1,45 @@
+    // Выбранные периоды пользователем, если сдавался сзв
+    var szvCheckboxCheckedByUser = [];
+
+
+    // Выбранные кварталы из tax-system, в html. 
+    // Добавляюься месяцы, в зависмимости от номера квартала
+    // Попадает сюда из функции fillSzvCheckboxWrapIfSentYes 
+    var szvCheckboxWrapIfSentYes = [];
+
+
+    // Отмеченные кварталы из tax-system
+    var checkedQuartersTaxSystem = [];
+
+
+    // Отмеченные годы
+    var checkedYearsTaxSystem = [];
+
+
+    // Месяцы и кварталы вообще
+    var quarters = {
+        first: { 
+                jan: 'Январь', 
+                feb: 'Февраль', 
+                mar: 'Март' 
+        },
+        second: { 
+                apr: 'Апрель', 
+                may: 'Май', 
+                jun: 'Июнь' 
+        },
+        third: { 
+                jul: 'Июль', 
+                aug: 'Август', 
+                sep: 'Сентябрь' 
+        },
+        fourth: { 
+                oct: 'Октябрь', 
+                nov: 'Ноябрь', 
+                dec: 'Декабрь' 
+        }
+    }
+
     // -------------------------------------------------------------------------------------
     /* Company - Tax-system*/
 
@@ -13,7 +55,6 @@
     function enableElement (elementId, className) {
         $(elementId).removeAttr('disabled');
         $(elementId).removeClass(className);
-        //$(elementId).toggleClass(className);
     }
 
 
@@ -42,7 +83,7 @@
                 if ( $(checkbox).prop('checked') ) { 
                         cntChecked++;
                         return false; 
-              }
+                }
         });
 
         if (cntChecked === 0) {
@@ -53,41 +94,9 @@
     //-----------------------------------------------------------------------------------------
 
 
+   
     // ----------------------------------------------------------------------------------------
     /* Company - Разное */
-
-    // Выбранные периоды пользователем, если сдавался сзв
-    var szvCheckboxCheckedByUser = [];
-
-
-    // Выбранные кварталы из tax-system, в html
-    // Попадает сюда из функции fillSzvCheckboxWrapIfSentYes 
-    var szvCheckboxWrapIfSentYes = [];
-
-
-    // Месяцы и кварталы вообще
-    var quarters = {
-        first: { 
-                jan: 'Январь', 
-                feb: 'Февраль', 
-                mar: 'Март' 
-        },
-        second: { 
-                apr: 'Апрель', 
-                may: 'Май', 
-                jun: 'Июнь' 
-        },
-        third: { 
-                jul: 'Июль', 
-                aug: 'Август', 
-                sep: 'Сентябрь' 
-        },
-        fourth: { 
-                oct: 'Октябрь', 
-                nov: 'Ноябрь', 
-                dec: 'Декабрь' 
-        }
-    }
 
 
     // Формирует массив szvCheckboxWrapIfSentYes, в котором каждый его элемент - это html-wrapper 
@@ -101,8 +110,8 @@
                     var quartNum = $(this).attr('id')[4];
                     var year = quartText.match( /20\d\d/g );
                     year = year[0];
-                    var quartMonthsWrapHtml = '<div class="quart-months-wrap">';
-                    var endQuartMonthsWrapHtml = '</div>';
+                    var divQuartMonths = '<div class="quart-months-wrap">';
+                    var divCloseQuartMonths = '</div>';
                     var labelInput = '<label><input id="szv-sent-';
                     var checkboxAndName = ' type="checkbox" name="szv-sent-';
             }
@@ -110,47 +119,47 @@
             switch (quartNum) {                     
                 case '1':
                 res = 
-                    quartMonthsWrapHtml + 
+                    divQuartMonths + 
                         '<p>' + quartText + '</p>' + 
                         labelInput + 'jan-' + year + '"' + checkboxAndName + 'jan-' + year + '">' + quarters.first.jan + '</label><br>' +                               
-                            labelInput + 'feb-' + year + '"' + checkboxAndName + 'feb-' + year + '">' + quarters.first.feb + '</label><br>' +
-                            labelInput + 'mar-' + year + '"' + checkboxAndName + 'mar-' + year + '">' + quarters.first.mar + '</label><br>' +
-                    endQuartMonthsWrapHtml;
-                  szvCheckboxWrapIfSentYes.push(res);
-                    break;              
+                        labelInput + 'feb-' + year + '"' + checkboxAndName + 'feb-' + year + '">' + quarters.first.feb + '</label><br>' +
+                        labelInput + 'mar-' + year + '"' + checkboxAndName + 'mar-' + year + '">' + quarters.first.mar + '</label><br>' +
+                    divCloseQuartMonths;
+                szvCheckboxWrapIfSentYes.push(res);
+                break;              
 
                 case '2':
                 res = 
-                    quartMonthsWrapHtml + 
+                    divQuartMonths + 
                         '<p>' + quartText + '</p>' +
-                      labelInput + 'apr-' + year + '"' + checkboxAndName + 'apr-' + year + '">' + quarters.second.apr + '</label><br>' +
-                            labelInput + 'may-' + year + '"' + checkboxAndName + 'may-' + year + '">' + quarters.second.may + '</label><br>' +
-                            labelInput + 'jun-' + year + '"' + checkboxAndName + 'jun-' + year + '">' + quarters.second.jun + '</label><br>' +
-                    endQuartMonthsWrapHtml;
-                  szvCheckboxWrapIfSentYes.push(res);
-                  break;                
+                        labelInput + 'apr-' + year + '"' + checkboxAndName + 'apr-' + year + '">' + quarters.second.apr + '</label><br>' +
+                        labelInput + 'may-' + year + '"' + checkboxAndName + 'may-' + year + '">' + quarters.second.may + '</label><br>' +
+                        labelInput + 'jun-' + year + '"' + checkboxAndName + 'jun-' + year + '">' + quarters.second.jun + '</label><br>' +
+                    divCloseQuartMonths;
+                szvCheckboxWrapIfSentYes.push(res);
+                break;                
 
                 case '3':
                 res = 
-                    quartMonthsWrapHtml + 
+                    divQuartMonths + 
                         '<p>' + quartText + '</p>' +
-                      labelInput + 'jul-' + year + '"' + checkboxAndName + 'jul-' + year + '">' + quarters.third.jul + '</label><br>' +
-                            labelInput + 'aug-' + year + '"' + checkboxAndName + 'aug-' + year + '">' + quarters.third.aug + '</label><br>' +
-                            labelInput + 'sep-' + year + '"' + checkboxAndName + 'sep-' + year + '">' + quarters.third.sep + '</label><br>' +
-                    endQuartMonthsWrapHtml;
-                  szvCheckboxWrapIfSentYes.push(res);
-                  break;                
+                        labelInput + 'jul-' + year + '"' + checkboxAndName + 'jul-' + year + '">' + quarters.third.jul + '</label><br>' +
+                        labelInput + 'aug-' + year + '"' + checkboxAndName + 'aug-' + year + '">' + quarters.third.aug + '</label><br>' +
+                        labelInput + 'sep-' + year + '"' + checkboxAndName + 'sep-' + year + '">' + quarters.third.sep + '</label><br>' +
+                    divCloseQuartMonths;
+                szvCheckboxWrapIfSentYes.push(res);
+                break;                
 
-                    case '4':
+                case '4':
                 res = 
-                    quartMonthsWrapHtml + 
+                    divQuartMonths + 
                         '<p>' + quartText + '</p>' +
                         labelInput + 'oct-' + year + '"' + checkboxAndName + 'oct-' + year + '">' + quarters.fourth.oct + '</label><br>' +
-                            labelInput + 'nov-' + year + '"' + checkboxAndName + 'nov-' + year + '">' + quarters.fourth.nov + '</label><br>' +
-                            labelInput + 'dec-' + year + '"' + checkboxAndName + 'dec-' + year + '">' + quarters.fourth.dec + '</label><br>' +
-                    endQuartMonthsWrapHtml;
-                  szvCheckboxWrapIfSentYes.push(res);
-                  break;                
+                        labelInput + 'nov-' + year + '"' + checkboxAndName + 'nov-' + year + '">' + quarters.fourth.nov + '</label><br>' +
+                        labelInput + 'dec-' + year + '"' + checkboxAndName + 'dec-' + year + '">' + quarters.fourth.dec + '</label><br>' +
+                    divCloseQuartMonths;
+                szvCheckboxWrapIfSentYes.push(res);
+                break;                
             }
         });
     }
@@ -161,7 +170,7 @@
         var res = '';
 
         for (var i = 0; i < szvCheckboxWrapIfSentYes.length; i++) {
-            res += szvCheckboxWrapIfSentYes[i];
+                res += szvCheckboxWrapIfSentYes[i];
         }
 
         return res;
@@ -181,53 +190,138 @@
         }); 
     }
 
+
+    // берет кварталы отмеченные из tax-system и отображает их в will-send
+    // wrap - с # указывать
+    // partOfInputName - без # указывать!
+    function quartersWillSend (wrap, partOfInputName) {
+        var year = null;
+        var textOfElem = null;
+        var quarter = null;        
+        $(wrap).show();
+
+        $('#choice-quarters input:checkbox').each(function(indx, el) {
+            if ( $(el).prop('checked') ) {
+                  textOfElem = $(el).parent('label').text().trim();  
+
+                  if ( $.inArray(textOfElem, checkedQuartersTaxSystem) === -1 ) {
+                        checkedQuartersTaxSystem.push(textOfElem);
+                  }                  
+            }
+        });
+
+        for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {
+              year = checkedQuartersTaxSystem[i].match( /20\d\d/g )[0];
+              quarter = checkedQuartersTaxSystem[i][0];
+
+              $(wrap).append(
+                '<div class="quarters-will-send">' + 
+                    '<label>' + 
+                        '<input type="checkbox" name="' + partOfInputName + '-' + quarter + '-' + year + '"' + ' checked>' + '&nbsp;' +
+                         checkedQuartersTaxSystem[i] +                                     
+                    '</label>' +
+                '</div>'
+              );
+        }
+    }
+
+
+    // берет годы отмеченные из tax-system и отображает их в will-send
+    // wrap - с # указывать
+    // partOfInputName - без # указывать!
+    function yearsWillSend (wrap, partOfInputName, textOfReport, simpleIp) {
+        var year = null;
+        var textOfElem = null;
+        var quarter = null;  
+        var whatToLoop = '#choice-quarters input:checkbox';
+        $(wrap).show();     
+
+        if (simpleIp) {
+            whatToLoop = '#years-wrap input:checkbox';
+        }
+
+        $(whatToLoop).each(function(indx, el) {
+            if ( $(el).prop('checked') && $(el).parent().parent().data('is-four') == 'yes' ) {
+                  textOfElem = $(el).parent('label').text().trim();  
+                  year = textOfElem.match( /20\d\d/g )[0];
+
+                  if ( $.inArray(year, checkedYearsTaxSystem) === -1 ) {                    
+                        checkedYearsTaxSystem.push(year);                     
+                  }                  
+            }
+
+            if ( $(el).prop('checked') && simpleIp ) {
+                  textOfElem = $(el).parent('label').text().trim();  
+                  year = textOfElem.match( /20\d\d/g )[0];
+
+                  if ( $.inArray(year, checkedYearsTaxSystem) === -1 ) {                    
+                        checkedYearsTaxSystem.push(year);                     
+                  }  
+            }
+        });
+
+
+        for (var i = 0; i < checkedYearsTaxSystem.length; i++) {
+              year = checkedYearsTaxSystem[i];
+
+              $(wrap).append(
+                '<div class="years-will-send">' + 
+                    '<label>' + 
+                        '<input type="checkbox" name="' + partOfInputName + '-' + year + '"' + ' checked>' + '&nbsp;' + 
+                         '<strong>' +
+                            textOfReport + year + ' год' +
+                         '</strong>' +                                                            
+                    '</label>' +
+                '</div>'
+              );
+        }
+    }
+
+
     // Если ООО. 
     // Отображает отчеты в will-send в зависимости от параметров, данных пользователем.
     // Если сзв-экран не показывался, то сзв-отчета не будет.
-    function showReportsWillSendCompany (szv) {
-        var checkbox = '#choice-quarters input:checkbox';
-        // var wrap = '.div-quarters';
-
+    function showReportsWillSendCompany (szv) {         
         $('#will-send-section').show(); 
 
         if ( $('#general').prop('checked') ) {
                 if ( $('#trans-yes').prop('checked') ) {
-                        $('#decl-nds-wrap').show();
-                        $('#decl-profit-wrap').show();
+                        quartersWillSend('#decl-nds-wrap', 'decl-nds-final');
+                        quartersWillSend('#decl-profit-wrap', 'decl-profit-final');
                 } else {
-                    $('#decl-one-wrap').show();
+                    quartersWillSend('#decl-one-wrap', 'decl-one-final');
                 }
 
-                $('#count-ins-wrap').show(); 
-                $('#count-fss-wrap').show(); 
+                quartersWillSend('#count-ins-wrap', 'count-ins-final');
+                quartersWillSend('#count-fss-wrap', 'count-fss-final');
 
                 if (szv === true) {
-                  $('#szv-m-wrap').show();
+                     quartersWillSend('#szv-m-wrap', 'szv-final');
                 }                 
 
                 if ( !(noCheckedFourQuart() ) ) {
-                        $('#buh-rep-ifns-wrap').show(); 
-                        $('#buh-rep-stat-wrap').show(); 
-                        $('#workers-cnt-wrap').show(); 
+                       yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
+                       yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
+                       yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');  
                 }                
         }
 
         if ( $('#simple').prop('checked') ) {
                 if ( !(noCheckedFourQuart() ) ) {
-                        $('#decl-usn-wrap').show();
+                       yearsWillSend ('#decl-usn-wrap', 'decl-usn', 'Налоговая декларация по УСН за ');
                 }   
                 
-                $('#count-ins-wrap').show(); 
-                $('#count-fss-wrap').show();    
+                quartersWillSend('#count-ins-wrap', 'count-ins-final');
+                quartersWillSend('#count-fss-wrap', 'count-fss-final');  
                 
                 if (szv === true) {
-                  $('#szv-m-wrap').show();
+                     quartersWillSend('#szv-m-wrap', 'szv-final');
                 } 
                 
                 if ( !(noCheckedFourQuart() ) ) {
-                      $('#buh-rep-ifns-wrap').show(); 
-                      $('#buh-rep-stat-wrap').show(); 
-                      $('#workers-cnt-wrap').show();    
+                       yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
+                       yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
+                       yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');                     
                 }   
         }
     }
@@ -236,21 +330,24 @@
     // Отображает отчеты в will-send в зависимости от параметров, данных пользователем
     // Если сзв-экран не показывался, то сзв-отчета не будет.
     function showReportsWillSendIp () {
+        $('#will-send-section').show(); 
+        
+        if ( $('#simple').prop('checked') ) { 
+                yearsWillSend('#decl-usn-wrap', 'decl-usn-final', 'Налоговая декларация по УСН за ', true);
+        }
+
         if ( $('#general').prop('checked') ) { 
               if ( $('#trans-yes').prop('checked') ) {
-                      $('#decl-nds-wrap').show();
-              } else {
-                  $('#decl-one-wrap').show();
+                      quartersWillSend('#decl-nds-wrap', 'decl-nds-final');
+              } else {                
+                  quartersWillSend('#decl-one-wrap', 'decl-one-final');
               }
 
               if ( !(noCheckedFourQuart() ) ) {
-                    $('#decl-ndfl-wrap').show(); 
+                     yearsWillSend('#decl-ndfl-wrap', 'buh-rep-ndfl-final', 'Налоговая декларация 3-НДФЛ за ');
               }
         }
 
-        if ( $('#simple').prop('checked') ) { 
-              $('#decl-usn-wrap').show();
-        }
     }
 
     /* End Company - Разное */

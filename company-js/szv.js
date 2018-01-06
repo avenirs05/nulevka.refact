@@ -53,14 +53,14 @@ $(function () {
 			if ( input.prop('checked') && 
 					 $.inArray(inputId, szvCheckboxCheckedByUser) === -1 ) 
 			{
-						szvCheckboxCheckedByUser.push(inputId);
+					 szvCheckboxCheckedByUser.push(inputId);
 			} 	 	
 
 			if ( input.prop('checked') === false ) {
 					if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
-							delete szvCheckboxCheckedByUser[indexInput];
+							  delete szvCheckboxCheckedByUser[indexInput];
 					}			
-			} 				
+			}
 	});
 
 });

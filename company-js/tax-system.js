@@ -81,7 +81,6 @@ $(function () {
 	// Если все чекбоксы сняты, кнопка "Дальше" становится неактивной
   // Если появился хоть один чекбокс, то кнопка "Дальше становится снова активной
 	$(".div-quarters input:checkbox").change(function() {
-			console.log('jjj');
 			var checkbox = '.div-quarters input:checkbox';
 
 			if ( $(this).prop('checked') ) {

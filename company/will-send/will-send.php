@@ -24,12 +24,7 @@
         </label>
       </div>
       
-      <div style="display: none;" id="decl-usn-wrap">
-        <label>
-          <input id='decl-usn' type='checkbox' name='decl-usn' checked>
-          <strong>Налоговая декларация по УСН за n-й год (годовая)</strong>
-        </label>
-      </div>
+      <div style="display: none;" id="decl-usn-wrap"></div>
       
       <div style="display: none;" id="count-ins-wrap">
         <label>
@@ -52,26 +47,9 @@
         </label>
       </div>
       
-      <div style="display: none;" id="buh-rep-ifns-wrap">
-        <label>
-          <input id='buh-rep-ifns' type='checkbox' name='buh-rep-ifns' checked>
-          <strong>Бухгалтерская (финансовая) отчетность в ИФНС за n-й год (годовая)</strong>
-        </label>
-      </div>
-      
-      <div style="display: none;" id="buh-rep-stat-wrap">
-        <label>
-          <input id='buh-rep-stat' type='checkbox' name='buh-rep-stat' checked>
-          <strong>Бухгалтерская (финансовая) отчетность в Росстат за n-й год (годовая)</strong>
-        </label>
-      </div>
-      
-      <div style="display: none;" id="workers-cnt-wrap">
-        <label>
-          <input id='workers-cnt' type='checkbox' name='workers-cnt' checked>
-          <strong>Сведения о среднесписочной численности работников за n-й год (годовая)</strong>
-        </label>
-      </div>
+      <div style="display: none;" id="buh-rep-ifns-wrap"></div>      
+      <div style="display: none;" id="buh-rep-stat-wrap"></div>      
+      <div style="display: none;" id="workers-cnt-wrap"></div>
 
       <button id="btn-back-will-send" onclick="return false;">Назад</button>
     </div>

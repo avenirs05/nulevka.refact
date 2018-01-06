@@ -26,7 +26,6 @@ $(function () {
 	// Кнопка Дальше
 	$("#btn-next-trans").click(function() {
 			$('#transactions-section').hide();
-	    $('#will-send-section').show();	
 	    showReportsWillSendIp();    
 	});
 
