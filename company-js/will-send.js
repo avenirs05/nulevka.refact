@@ -25,6 +25,7 @@ $(function () {
 				// удалить итоговые кварталы-элементы из will-send
 				$('.quarters-will-send').remove();
 				$('.years-will-send').remove();
+				$('.szv-wrap-if-no-final').remove();
 		});
 
 });

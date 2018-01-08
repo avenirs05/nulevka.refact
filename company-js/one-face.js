@@ -44,12 +44,12 @@ $(function () {
 
 				    			// отображаем периоды, когда отчет сдавался
 				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes() );
-				    			makeCheckedSzvIfBtnBack ();		    			
+				    			makeCheckedSzvIfBtnBack();		    			
 				    }
 			} 
 
 			if ( $('#one-face-yes').prop('checked') ) {
-							showReportsWillSendCompany(); 				 
+							showReportsWillSendCompany(false); 				 
 			}  
 	});
 

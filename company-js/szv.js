@@ -38,7 +38,8 @@ $(function () {
 	// Кнопка Дальше
 	$("#btn-next-szv").click(function() {		
 			$('#szv-section').hide(); 
-			showReportsWillSendCompany(true);    
+			showReportsWillSendCompany(true); 
+			
 	});
 
 	

@@ -47,7 +47,6 @@
     function disableElement (elementId, className) {
         $(elementId).attr('disabled', 'disabled');
         $(elementId).addClass(className);
-        // $(elementId).toggleClass(className);
     }
 
 
@@ -278,6 +277,71 @@
     }
 
 
+    // Возвращает месяц на русском и английском
+    function whatMonth (quartNum) {
+        var res = {}
+
+        switch (quartNum) {                     
+            case '1':
+            res = [ ['Январь', 'jan'], ['Февраль', 'feb'], ['Март', 'mar'] ];
+            break;
+
+            case '2':
+            res = [ ['Апрель', 'apr'], ['Май', 'may'], ['Июнь', 'jun'] ];
+            break;
+
+            case '3':
+            res = [ ['Июль', 'jul'], ['Август', 'aug'], ['Сентябрь', 'sep'] ];
+            break;
+
+            case '4':
+            res = [ ['Октябрь', 'oct'], ['Ноябрь', 'nov'], ['Декабрь', 'dec'] ];
+            break;
+        }
+
+        return res;
+    }
+
+
+    // Если блок сзв появился, но пользователь выбрал, что сзв он не сдавал
+    function szvWillSendIfNo () {
+        var res = '<div class="szv-wrap-if-no-final">';
+        var quartNum = null;
+        var year = null;
+        
+        for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {
+                quartNum = checkedQuartersTaxSystem[i][0];
+                year = checkedQuartersTaxSystem[i].match( /20\d\d/g )[0];
+
+            res +=  '<div class="szv-wrap-if-no-final">' + 
+                        '<div class="quarter-name">' + checkedQuartersTaxSystem[i] + '</div>' +
+                        '<div class="month">' +
+                            '<div>' + 
+                                '<label>' +
+                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' +
+                                    whatMonth(quartNum)[0][0] +
+                                '</label>' +
+                            '</div>' +
+                            '<div>' + 
+                                '<label>' +
+                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' +
+                                    whatMonth(quartNum)[1][0] + 
+                                '</label>' +
+                            '</div>' +
+                            '<div>' + 
+                                '<label>' +
+                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' +
+                                    whatMonth(quartNum)[2][0] + 
+                                '</label>'
+                            '</div>' +                            
+                        '</div>' +
+                    '</div>';                
+        }
+
+        return res + '</div>';
+    }
+
+
     // Если ООО. 
     // Отображает отчеты в will-send в зависимости от параметров, данных пользователем.
     // Если сзв-экран не показывался, то сзв-отчета не будет.
@@ -295,8 +359,12 @@
                 quartersWillSend('#count-ins-wrap', 'count-ins-final');
                 quartersWillSend('#count-fss-wrap', 'count-fss-final');
 
-                if (szv === true) {
-                     quartersWillSend('#szv-m-wrap', 'szv-final');
+                if (szv) {                    
+                    $('#szv-m-wrap').show();
+                    
+                    if ( $('#szv-quest-no').prop('checked') ) {
+                        $('#szv-m-wrap').append( szvWillSendIfNo() );
+                    }                    
                 }                 
 
                 if ( !(noCheckedFourQuart() ) ) {
@@ -344,7 +412,7 @@
               }
 
               if ( !(noCheckedFourQuart() ) ) {
-                     yearsWillSend('#decl-ndfl-wrap', 'buh-rep-ndfl-final', 'Налоговая декларация 3-НДФЛ за ');
+                     yearsWillSend('#decl-ndfl-wrap', 'decl-ndfl-final', 'Налоговая декларация 3-НДФЛ за ');
               }
         }
 
