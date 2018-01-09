@@ -1,6 +1,8 @@
 $(function () {
 
 		$('#btn-back-will-send').click(function() {
+				// $('.quarter-name').show();
+
 				$('#decl-nds-wrap').hide();
 				$('#decl-profit-wrap').hide();
 				$('#decl-one-wrap').hide();
@@ -10,8 +12,7 @@ $(function () {
 				$('#szv-m-wrap').hide();
 				$('#buh-rep-ifns-wrap').hide();
 				$('#buh-rep-stat-wrap').hide();
-				$('#workers-cnt-wrap').hide();
-
+				$('#workers-cnt-wrap').hide();				
 				$('#will-send-section').hide();
 
 				if ( $('#one-face-yes').prop('checked')  ) {

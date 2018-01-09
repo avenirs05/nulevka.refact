@@ -313,39 +313,59 @@
                 quartNum = checkedQuartersTaxSystem[i][0];
                 year = checkedQuartersTaxSystem[i].match( /20\d\d/g )[0];
 
-            res +=  '<div class="szv-wrap-if-no-final">' + 
-                        '<div class="quarter-name">' + checkedQuartersTaxSystem[i] + '</div>' +
-                        '<div class="month">' +
-                            '<div>' + 
-                                '<label>' +
-                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' +
-                                    whatMonth(quartNum)[0][0] +
-                                '</label>' +
-                            '</div>' +
-                            '<div>' + 
-                                '<label>' +
-                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' +
-                                    whatMonth(quartNum)[1][0] + 
-                                '</label>' +
-                            '</div>' +
-                            '<div>' + 
-                                '<label>' +
-                                    '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' +
-                                    whatMonth(quartNum)[2][0] + 
-                                '</label>'
-                            '</div>' +                            
+            res +=  '<div class="quarter-and-month-wrap">' + 
+
+                        '<div class="quarter-name">' + 
+                            checkedQuartersTaxSystem[i] + 
+                        '</div>' +    
+
+                        '<div class="month">' + 
+                            '<label>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' +
+                                whatMonth(quartNum)[0][0] +
+                            '</label>' +
                         '</div>' +
-                    '</div>';                
+                        
+                        '<div class="month">' + 
+                            '<label>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' +
+                                whatMonth(quartNum)[1][0] + 
+                            '</label>' +
+                        '</div>' +
+                        
+                        '<div class="month">' + 
+                            '<label>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' +
+                                whatMonth(quartNum)[2][0] + 
+                            '</label>' +
+                        '</div>' +  
+                    '</div>';                    
         }
 
         return res + '</div>';
     }
 
 
+    // удаляет "n-й квартал из сзв итогового"
+    function deleteQuarterNameSzv (quartalNum) {
+        var cntFirstQuart = 0;
+        $(quartalNum).siblings('.month').each(function(indx, el) {
+             if ( $(el).children('label').children('input').prop('checked') === false ) {
+                    cntFirstQuart++;
+             }
+             
+             if (cntFirstQuart === 3) {
+                 $(el).siblings('.quarter-name').remove();
+             }
+        });
+    }
+
+
     // Если ООО. 
     // Отображает отчеты в will-send в зависимости от параметров, данных пользователем.
     // Если сзв-экран не показывался, то сзв-отчета не будет.
-    function showReportsWillSendCompany (szv) {         
+    function showReportsWillSendCompany (szv) {
+        var fakeId = null;         
         $('#will-send-section').show(); 
 
         if ( $('#general').prop('checked') ) {
@@ -363,8 +383,23 @@
                     $('#szv-m-wrap').show();
                     
                     if ( $('#szv-quest-no').prop('checked') ) {
+                            $('#szv-m-wrap').append( szvWillSendIfNo() );
+                    } else {
                         $('#szv-m-wrap').append( szvWillSendIfNo() );
-                    }                    
+                        $('#szv-m-wrap input:checkbox').each(function(indx, el) {
+                            fakeId =  'szv-sent-' + $(el).attr('name').substring(10);
+                            
+                            if ( $.inArray(fakeId, szvCheckboxCheckedByUser) !== -1 ) {
+                                   $(el).removeAttr('checked'); 
+                                   $(el).parent().parent().hide();
+                            } 
+                        });
+
+                        deleteQuarterNameSzv (".quarter-name:contains('1-й квартал')");
+                        deleteQuarterNameSzv (".quarter-name:contains('2-й квартал')");
+                        deleteQuarterNameSzv (".quarter-name:contains('3-й квартал')");
+                        deleteQuarterNameSzv (".quarter-name:contains('4-й квартал')");                        
+                    }                  
                 }                 
 
                 if ( !(noCheckedFourQuart() ) ) {
