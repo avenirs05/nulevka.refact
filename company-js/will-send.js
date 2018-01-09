@@ -37,13 +37,28 @@ $(function () {
 		$('#count-fss').change(makeCheckedChildChecks);
 		$('#szv-m').change(makeCheckedChildChecks);
 		smartCheckUncheck();
-		
+
 
 		// Инпут в сзв в will send - если отмечен хотя бы один, то заголовок сзв тоже становится отмеченным
 		$(document).on('change', '.month input', function() {
 				if ( $(this).prop('checked') ) {
 							 $('#szv-m').prop('checked', true);
 				}	
+
+				if ( $(this).prop('checked') == false) {
+				    for (var i = 0; i < $('.month input').length; i++) {
+				            if ( $('.month input').eq(i).prop('checked') ) {
+				                    break;
+				            }
+
+				            if (i == $('.month input').length - 1) {
+				                  $('#szv-m').prop('checked', false);
+				            }                                                               
+				    }           
+				}
 		});
+
+
+
 
 });
