@@ -1,8 +1,6 @@
 $(function () {
 
 		$('#btn-back-will-send').click(function() {
-				// $('.quarter-name').show();
-
 				$('#decl-nds-wrap').hide();
 				$('#decl-profit-wrap').hide();
 				$('#decl-one-wrap').hide();

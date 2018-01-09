@@ -62,9 +62,11 @@
         var cntChecked = 0;
 
         $('#choice-quarters input:checkbox').each(function(index, input) {  
-                if ( $(input).parent().parent().data('is-four') == 'yes' && $(input).prop('checked') ) {        
-                            cntChecked++;   
-                            return false; 
+                if ( $(input).parent().parent().data('is-four') == 'yes' && 
+                     $(input).prop('checked') ) 
+                {        
+                        cntChecked++;   
+                        return false; 
                 }                         
         }); 
 
@@ -345,18 +347,15 @@
         return res + '</div>';
     }
 
-
+    
     // удаляет "n-й квартал из сзв итогового"
-    function deleteQuarterNameSzv (quartalNum) {
-        var cntFirstQuart = 0;
-        $(quartalNum).siblings('.month').each(function(indx, el) {
-             if ( $(el).children('label').children('input').prop('checked') === false ) {
-                    cntFirstQuart++;
-             }
-             
-             if (cntFirstQuart === 3) {
-                 $(el).siblings('.quarter-name').remove();
-             }
+    function deleteQuarterNameSzv () {
+        $('.quarter-and-month-wrap').each(function(indx, el) {
+             $(el).children('.quarter-name').each(function(indx, el) {
+                if ( $(el).siblings('.month:hidden').length === 3) {
+                        $(el).remove();
+                }
+             });
         });
     }
 
@@ -395,10 +394,12 @@
                             } 
                         });
 
-                        deleteQuarterNameSzv (".quarter-name:contains('1-й квартал')");
-                        deleteQuarterNameSzv (".quarter-name:contains('2-й квартал')");
-                        deleteQuarterNameSzv (".quarter-name:contains('3-й квартал')");
-                        deleteQuarterNameSzv (".quarter-name:contains('4-й квартал')");                        
+                        deleteQuarterNameSzv();
+                        // deleteQuarterNameSzv(".quarter-name:contains('1-й квартал')");
+                        // deleteQuarterNameSzv(".quarter-name:contains('2-й квартал')");
+                        // deleteQuarterNameSzv(".quarter-name:contains('3-й квартал')");
+                        // deleteQuarterNameSzv(".quarter-name:contains('4-й квартал')");   
+                        //console.log(checkedYearsTaxSystem);                     
                     }                  
                 }                 
 
