@@ -306,8 +306,8 @@
 
 
     // Если блок сзв появился, но пользователь выбрал, что сзв он не сдавал
-    function szvWillSendIfNo () {
-        var res = '<div class="szv-wrap-if-no-final">';
+    function szvWillSend () {
+        var res = '<div class="szv-wrap-final">';
         var quartNum = null;
         var year = null;
         
@@ -316,31 +316,27 @@
                 year = checkedQuartersTaxSystem[i].match( /20\d\d/g )[0];
 
             res +=  '<div class="quarter-and-month-wrap">' + 
-
                         '<div class="quarter-name">' + 
                             checkedQuartersTaxSystem[i] + 
-                        '</div>' +    
-
+                        '</div>' + 
                         '<div class="month">' + 
                             '<label>' +
                                 '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' +
                                 whatMonth(quartNum)[0][0] +
                             '</label>' +
-                        '</div>' +
-                        
+                        '</div>' +                        
                         '<div class="month">' + 
                             '<label>' +
                                 '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' +
                                 whatMonth(quartNum)[1][0] + 
                             '</label>' +
-                        '</div>' +
-                        
+                        '</div>' +                        
                         '<div class="month">' + 
                             '<label>' +
                                 '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' +
                                 whatMonth(quartNum)[2][0] + 
                             '</label>' +
-                        '</div>' +  
+                        '</div>' +                          
                     '</div>';                    
         }
 
@@ -382,9 +378,10 @@
                     $('#szv-m-wrap').show();
                     
                     if ( $('#szv-quest-no').prop('checked') ) {
-                            $('#szv-m-wrap').append( szvWillSendIfNo() );
+                            $('#szv-m-wrap').append( szvWillSend() );
                     } else {
-                        $('#szv-m-wrap').append( szvWillSendIfNo() );
+                        $('#szv-m-wrap').append( szvWillSend() );
+
                         $('#szv-m-wrap input:checkbox').each(function(indx, el) {
                             fakeId =  'szv-sent-' + $(el).attr('name').substring(10);
                             
@@ -394,12 +391,7 @@
                             } 
                         });
 
-                        deleteQuarterNameSzv();
-                        // deleteQuarterNameSzv(".quarter-name:contains('1-й квартал')");
-                        // deleteQuarterNameSzv(".quarter-name:contains('2-й квартал')");
-                        // deleteQuarterNameSzv(".quarter-name:contains('3-й квартал')");
-                        // deleteQuarterNameSzv(".quarter-name:contains('4-й квартал')");   
-                        //console.log(checkedYearsTaxSystem);                     
+                        deleteQuarterNameSzv();                   
                     }                  
                 }                 
 
@@ -451,8 +443,74 @@
                      yearsWillSend('#decl-ndfl-wrap', 'decl-ndfl-final', 'Налоговая декларация 3-НДФЛ за ');
               }
         }
-
     }
+
+
+    // Отметить все дочерние чекбоксы, если отмечен родительский
+    // В will-send (кварталы). Не входит сюда сзв
+
+    function makeCheckedChildChecks () {
+        var childInput = null;     
+
+        if ( $(this).attr('id') == 'szv-m' ) {
+            childInput = $('.month').children().children('input');
+
+            if ( $(this).prop('checked') ) {
+                    $(childInput).each(function(indx, el) {
+                        $(el).prop('checked', true);
+                    });
+            }
+
+            if ( $(this).prop('checked') === false ) {
+                    $(childInput).each(function(indx, el) {
+                        $(el).prop('checked', false);
+                    });
+            }  
+        }
+
+        var childInput = $(this).parent().siblings('.quarters-will-send').children().children('input');        
+
+        if ( $(this).prop('checked') ) {
+                $(childInput).each(function(indx, el) {
+                    $(el).prop('checked', true);
+                });
+        }
+
+        if ( $(this).prop('checked') === false ) {
+                $(childInput).each(function(indx, el) {
+                    $(el).prop('checked', false);
+                });
+        }    
+    }
+
+
+    // Ставит, убирает чекбоксы там где надо в will-send. Не содержит СЗВ
+    function smartCheckUncheck () {
+        $(document).on('change', '.quarters-will-send input', function() {
+            var wrap = null;
+            var inputSet = null;
+
+            if ( $(this).prop('checked') ) {
+                         $(this).parent().parent().siblings('label').children('input').prop('checked', true);
+            }
+
+            if ( $(this).prop('checked') == false) {
+                wrapId = $(this).parent().parent().parent().attr('id');     
+                inputSet = ' .quarters-will-send input';
+
+                for (var i = 0; i < $('#' + wrapId + inputSet).length; i++) {
+                        if ( $('#' + wrapId + inputSet).eq(i).prop('checked') ) {
+                                    break;
+                        }
+
+                        if (i == $('#' + wrapId + inputSet).length - 1) {
+                                $('#' + wrapId).children('label').children('input').prop('checked', false);
+                        }                                                               
+                }           
+            }
+        });
+    }
+
 
     /* End Company - Разное */
     // -------------------------------------------------------------------------------------

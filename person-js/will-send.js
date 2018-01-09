@@ -24,6 +24,11 @@ $(function () {
 				// удалить итоговые кварталы-элементы из will-send
 				$('.quarters-will-send').remove();
 				$('.years-will-send').remove();
+
+				// Отмечаются/убираются галочки у дочерних чекбоксов
+				$('#decl-nds').change(makeCheckedChildChecks);
+				$('#decl-one').change(makeCheckedChildChecks);
+				smartCheckUncheck(); 
 		});
 
 });

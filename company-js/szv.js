@@ -38,8 +38,7 @@ $(function () {
 	// Кнопка Дальше
 	$("#btn-next-szv").click(function() {		
 			$('#szv-section').hide(); 			
-			showReportsWillSendCompany(true); 
-			// console.log(szvCheckboxCheckedByUser);
+			showReportsWillSendCompany(true); 			 
 	});
 
 	
