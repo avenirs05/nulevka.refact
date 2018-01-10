@@ -448,7 +448,6 @@
 
     // Отметить все дочерние чекбоксы, если отмечен родительский
     // В will-send (кварталы). Не входит сюда сзв
-
     function makeCheckedChildChecks () {
         var childInput = null;     
 
@@ -491,12 +490,12 @@
             var inputSet = null;
 
             if ( $(this).prop('checked') ) {
-                         $(this).parent().parent().siblings('label').children('input').prop('checked', true);
+                    $(this).parent().parent().siblings('label').children('input').prop('checked', true);
             }
 
             if ( $(this).prop('checked') == false) {
-                wrapId = $(this).parent().parent().parent().attr('id');     
-                inputSet = ' .quarters-will-send input';
+                    wrapId = $(this).parent().parent().parent().attr('id');     
+                    inputSet = ' .quarters-will-send input';
 
                 for (var i = 0; i < $('#' + wrapId + inputSet).length; i++) {
                         if ( $('#' + wrapId + inputSet).eq(i).prop('checked') ) {
@@ -509,6 +508,17 @@
                 }           
             }
         });
+    }
+
+
+    // Если только один квартал, то добавляется фраза "...сдадим за n-й квартал 20ХХ года"
+    function addPhraseIfOneQuarter () {
+        if (checkedQuartersTaxSystem.length == 1) {
+            $('#span-we-will-send').text('Мы за Вас подготовим и сдадим за ' + checkedQuartersTaxSystem[0] + ':' );
+            $('.quarters-will-send').hide();
+            $('.quarter-name').hide();
+            $('.month').hide();
+        } else $('#span-we-will-send').text('Мы за Вас подготовим и сдадим:');
     }
 
 

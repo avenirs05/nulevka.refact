@@ -18,6 +18,7 @@ $(function () {
 							$('#one-face-section').show();
 				} else $('#szv-section').show();
 
+
 				// очистить массив выбранных кварталов в tax-system
 				checkedQuartersTaxSystem = []; 
 				checkedYearsTaxSystem = []; 
@@ -57,6 +58,8 @@ $(function () {
 				    }           
 				}
 		});
+
+
 
 
 

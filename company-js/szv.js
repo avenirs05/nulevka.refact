@@ -37,8 +37,9 @@ $(function () {
 	
 	// Кнопка Дальше
 	$("#btn-next-szv").click(function() {		
-			$('#szv-section').hide(); 			
-			showReportsWillSendCompany(true); 			 
+			$('#szv-section').hide(); 
+			showReportsWillSendCompany(true); 
+			addPhraseIfOneQuarter();
 	});
 
 	
