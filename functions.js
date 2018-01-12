@@ -1,3 +1,11 @@
+    // отладочная функция
+    function showArrays () {
+        console.log(szvCheckboxCheckedByUser);
+        console.log(szvCheckboxWrapIfSentYes);
+        console.log(checkedQuartersTaxSystem);
+        console.log(checkedYearsTaxSystem);
+    }
+
     // Выбранные периоды пользователем, если сдавался сзв
     var szvCheckboxCheckedByUser = [];
 
@@ -523,9 +531,9 @@
 
 
     // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
-    function delSzvInWillSendIfZero () {
+    function delSzvIfWillSendIfZero () {
         if ($('.month:visible').length === 0) {
-                    $('#szv-m-wrap').hide();
+                $('#szv-m-wrap').hide();
         }
     }
 
@@ -548,9 +556,60 @@
 
         if ( input.prop('checked') === false ) {
                 if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
-                          delete szvCheckboxCheckedByUser[indexInput];
+                        delete szvCheckboxCheckedByUser[indexInput];
                 }           
         }
+    }
+
+
+    function isFourQuarter (quarterNum) {
+        switch(quarterNum) {
+            case 1:
+                return false;
+            break;
+
+            case 2:
+                return false;
+            break;
+
+            case 3:
+                return false;
+            break;
+
+            case 4:
+                return true;
+            break;
+        }
+    }
+
+
+    function calculateFinalSumCompany () {
+        showArrays ();
+        var finalSum = 0;
+        var base = 1499;  
+        var isFourQuart;       
+
+        for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {
+                if ( $('#trans-no').prop('checked') && $('#one-face-yes').prop('checked') ) {
+                        finalSum = finalSum + base;
+                } 
+
+                if ( $('#trans-yes').prop('checked') && $('#one-face-yes').prop('checked') ||
+                     $('#trans-no').prop('checked') && $('#one-face-no').prop('checked') )
+                {
+                        finalSum = finalSum + base + 500;
+                } 
+
+                if ( $('#trans-yes').prop('checked') && $('#one-face-no').prop('checked') ) {
+                        finalSum = finalSum + base + 1000;
+                } 
+                
+                if ( isFourQuarter( parseInt(checkedQuartersTaxSystem[i][0]) ) ) {
+                        finalSum = finalSum + 1000;
+                }
+        }
+        
+        return finalSum;
     }
 
     /* End Company - Разное */

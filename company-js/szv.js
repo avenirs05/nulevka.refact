@@ -40,7 +40,9 @@ $(function () {
 			$('#szv-section').hide(); 
 			showReportsWillSendCompany(true); 
 			addPhraseIfOneQuarter();
-			delSzvInWillSendIfZero();
+			delSzvIfWillSendIfZero();
+			$('#final-sum-digits').text( calculateFinalSumCompany() );
+
 	});
 
 	

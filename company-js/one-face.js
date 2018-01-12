@@ -49,7 +49,8 @@ $(function () {
 			} 
 
 			if ( $('#one-face-yes').prop('checked') ) {
-							showReportsWillSendCompany(false); 				 
+							showReportsWillSendCompany(false); 		
+							$('#final-sum-digits').text( calculateFinalSumCompany() );		 
 			}  
 	});
 

@@ -824,7 +824,7 @@ input[type="checkbox"] {
 	margin-left: 80px;
 }
 
-#div-final-sum {
+#final-sum-wrap {
     background-color: rgb(51, 153, 51);
     width: 410px;
     color: rgb(255, 255, 255);

@@ -52,6 +52,9 @@
       <div style="display: none;" id="workers-cnt-wrap"></div>
 
       <button id="btn-back-will-send" onclick="return false;">Назад</button>
+
+      <?php require_once 'final-sum.php'; ?>
+
     </div>
   </div>
 </div>

@@ -36,7 +36,7 @@ $(function () {
 			
 			if (wrap.data('is-four') == 'yes') {
 					if ( $(this).prop('checked') ) {
-						  howPutUk.show(); 
+						 		 howPutUk.show(); 
 					} else howPutUk.hide();
 			}	
 	});
@@ -87,6 +87,7 @@ $(function () {
 					if ( $('#btn-next-tax-system').hasClass('disabled-btn') ) {
 								enableElement('#btn-next-tax-system', 'disabled-btn');
 					}
+					
 					return false;
 			}
 

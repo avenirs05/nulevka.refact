@@ -48,17 +48,21 @@ $(function () {
 
 				if ( $(this).prop('checked') == false) {
 				    for (var i = 0; i < $('.month input').length; i++) {
-				            if ( $('.month input').eq(i).prop('checked') ) {
-				                    break;
-				            }
+			            if ( $('.month input').eq(i).prop('checked') ) {
+			                    break;
+			            }
 
-				            if (i == $('.month input').length - 1) {
-				                  $('#szv-m').prop('checked', false);
-				            }                                                               
+			            if (i == $('.month input').length - 1) {
+			                  $('#szv-m').prop('checked', false);
+			            }                                                               
 				    }           
 				}
 		});
 
+
+
+
+		
 
 
 
