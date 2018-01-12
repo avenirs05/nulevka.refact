@@ -522,6 +522,37 @@
     }
 
 
+    // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
+    function delSzvInWillSendIfZero () {
+        if ($('.month:visible').length === 0) {
+                    $('#szv-m-wrap').hide();
+        }
+    }
+
+
+
+    // управляет массивом SzvCheckboxCheckedByUser
+    // добавляет (удаляет) в массив szvCheckboxCheckedByUser
+    // в зависмимости от раставленных галочек юзером на экране сзв
+    function manageSzvCheckboxCheckedByUser () {
+        var inputs = '.quart-months-wrap input';
+        var inputId = $(this).attr('id');
+        var input = $(this);
+        var indexInput = szvCheckboxCheckedByUser.indexOf(inputId);
+
+        if ( input.prop('checked') && 
+                 $.inArray(inputId, szvCheckboxCheckedByUser) === -1 ) 
+        {
+                 szvCheckboxCheckedByUser.push(inputId);
+        }       
+
+        if ( input.prop('checked') === false ) {
+                if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
+                          delete szvCheckboxCheckedByUser[indexInput];
+                }           
+        }
+    }
+
     /* End Company - Разное */
     // -------------------------------------------------------------------------------------
 

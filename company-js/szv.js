@@ -40,28 +40,12 @@ $(function () {
 			$('#szv-section').hide(); 
 			showReportsWillSendCompany(true); 
 			addPhraseIfOneQuarter();
+			delSzvInWillSendIfZero();
 	});
 
 	
 	// Когда пользователь отмечает, что сдавал сзв в тот или иной месяц
 	// Событие на document, т.к. quart-months-wrap был создан динамически (вставлен в dom)
-	$(document).on('change', '.quart-months-wrap input', function() {
-			var inputs = '.quart-months-wrap input';
-			var inputId = $(this).attr('id');
-			var input = $(this);
-			var indexInput = szvCheckboxCheckedByUser.indexOf(inputId);
-
-			if ( input.prop('checked') && 
-					 $.inArray(inputId, szvCheckboxCheckedByUser) === -1 ) 
-			{
-					 szvCheckboxCheckedByUser.push(inputId);
-			} 	 	
-
-			if ( input.prop('checked') === false ) {
-					if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
-							  delete szvCheckboxCheckedByUser[indexInput];
-					}			
-			}
-	});
+	$(document).on('change', '.quart-months-wrap input', manageSzvCheckboxCheckedByUser);
 
 });
