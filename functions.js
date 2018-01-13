@@ -531,10 +531,34 @@
 
 
     // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
+    // function delSzvIfWillSendIfZero () {
+    //     if ($('.month:visible').length === 0) {
+    //             $('#szv-m-wrap').hide();
+    //     }
+
+    //     if ( $('#szv-quest-no').prop('checked') && checkedQuartersTaxSystem.length === 1  ) {
+    //             $('#szv-m-wrap').show();
+    //     }
+    // }
+
+    // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
     function delSzvIfWillSendIfZero () {
-        if ($('.month:visible').length === 0) {
-                $('#szv-m-wrap').hide();
+        var i = 0;
+        //console.log( $('.quart-months-wrap').length );
+        if ( $('.quart-months-wrap').length === 1) {
+               $('.quart-months-wrap').children('label').children('input').each(function(indx, el) {
+                    if ( $(el).prop('checked') ) {
+                            i++;
+                    } 
+               });               
         }
+        if (i === 3) {
+            $('#szv-m-wrap').hide();
+        }
+
+        // if ( $('#szv-quest-no').prop('checked') && checkedQuartersTaxSystem.length === 1  ) {
+        //         $('#szv-m-wrap').show();
+        // }
     }
 
 

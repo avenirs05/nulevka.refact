@@ -36,11 +36,12 @@ $(function () {
 
 	
 	// Кнопка Дальше
-	$("#btn-next-szv").click(function() {		
+	$("#btn-next-szv").click(function() {
 			$('#szv-section').hide(); 
 			showReportsWillSendCompany(true); 
 			addPhraseIfOneQuarter();
 			delSzvIfWillSendIfZero();
+
 			$('#final-sum-digits').text( calculateFinalSumCompany() );
 
 	});
