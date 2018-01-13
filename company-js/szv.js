@@ -39,8 +39,12 @@ $(function () {
 	$("#btn-next-szv").click(function() {
 			$('#szv-section').hide(); 
 			showReportsWillSendCompany(true); 
+			// console.log ( $('.month:visible').length );
+			// console.log ( typeof $('.month:visible').length );
+			if ( $('.month:visible').length === 0 && $('#szv-quest-yes').prop('checked') ) {
+						$('#szv-m-wrap').hide();
+			}
 			addPhraseIfOneQuarter();
-			delSzvIfWillSendIfZero();
 
 			$('#final-sum-digits').text( calculateFinalSumCompany() );
 

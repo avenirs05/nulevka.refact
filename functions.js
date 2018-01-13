@@ -526,40 +526,26 @@
             $('.quarters-will-send').hide();
             $('.quarter-name').hide();
             $('.month').hide();
+            
         } else $('#span-we-will-send').text('Мы за Вас подготовим и сдадим:');
     }
 
 
     // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
     // function delSzvIfWillSendIfZero () {
-    //     if ($('.month:visible').length === 0) {
-    //             $('#szv-m-wrap').hide();
+    //     var i = 0;
+    //     console.log( $('.quart-months-wrap').length );
+    //     if ( $('.quart-months-wrap').length === 1) {
+    //            $('.quart-months-wrap').children('label').children('input').each(function(indx, el) {
+    //                 if ( $(el).prop('checked') ) {
+    //                         i++;
+    //                 } 
+    //            });               
     //     }
-
-    //     if ( $('#szv-quest-no').prop('checked') && checkedQuartersTaxSystem.length === 1  ) {
-    //             $('#szv-m-wrap').show();
+    //     if (i === 3) {
+    //         $('#szv-m-wrap').hide();
     //     }
     // }
-
-    // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
-    function delSzvIfWillSendIfZero () {
-        var i = 0;
-        //console.log( $('.quart-months-wrap').length );
-        if ( $('.quart-months-wrap').length === 1) {
-               $('.quart-months-wrap').children('label').children('input').each(function(indx, el) {
-                    if ( $(el).prop('checked') ) {
-                            i++;
-                    } 
-               });               
-        }
-        if (i === 3) {
-            $('#szv-m-wrap').hide();
-        }
-
-        // if ( $('#szv-quest-no').prop('checked') && checkedQuartersTaxSystem.length === 1  ) {
-        //         $('#szv-m-wrap').show();
-        // }
-    }
 
 
 
@@ -610,27 +596,41 @@
     function calculateFinalSumCompany () {
         showArrays ();
         var finalSum = 0;
-        var base = 1499;  
+        var baseGeneral = 1499;  
+        var baseSimple = 999;
         var isFourQuart;       
 
         for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {
-                if ( $('#trans-no').prop('checked') && $('#one-face-yes').prop('checked') ) {
-                        finalSum = finalSum + base;
-                } 
+                if ( $('#general').prop('checked') ) {                    
+                    if ( $('#trans-no').prop('checked') && $('#one-face-yes').prop('checked') ) {
+                            finalSum = finalSum + baseGeneral;
+                    } 
 
-                if ( $('#trans-yes').prop('checked') && $('#one-face-yes').prop('checked') ||
-                     $('#trans-no').prop('checked') && $('#one-face-no').prop('checked') )
-                {
-                        finalSum = finalSum + base + 500;
-                } 
+                    if ( $('#trans-yes').prop('checked') && $('#one-face-yes').prop('checked') ||
+                         $('#trans-no').prop('checked') && $('#one-face-no').prop('checked') )
+                    {
+                            finalSum = finalSum + baseGeneral + 500;
+                    } 
 
-                if ( $('#trans-yes').prop('checked') && $('#one-face-no').prop('checked') ) {
-                        finalSum = finalSum + base + 1000;
-                } 
-                
-                if ( isFourQuarter( parseInt(checkedQuartersTaxSystem[i][0]) ) ) {
+                    if ( $('#trans-yes').prop('checked') && $('#one-face-no').prop('checked') ) {
+                            finalSum = finalSum + baseGeneral + 1000;
+                    }                  
+                }
+
+                if ( $('#simple').prop('checked') ) {                    
+                    if ( $('#one-face-yes').prop('checked') ) {
+                            finalSum = finalSum + baseSimple;
+                    } 
+
+                    if ( $('#one-face-no').prop('checked') ) {
+                            finalSum = finalSum + baseSimple + 500;
+                    }
+                }
+
+                if ( isFourQuarter( parseInt(checkedQuartersTaxSystem[i][0] ) ) ) {
                         finalSum = finalSum + 1000;
                 }
+
         }
         
         return finalSum;
