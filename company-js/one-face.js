@@ -27,7 +27,7 @@ $(function () {
 	$("#btn-next-one-face").click(function() {
 			$('#one-face-section').hide();
 
-			// если попали в первый раз в секцию сзв
+			//если попали в первый раз в секцию сзв
 			if ( $('#szv-quest-yes').prop('checked') == false &&  
 					 $('#szv-quest-no').prop('checked') == false) 
 			{			
@@ -46,6 +46,10 @@ $(function () {
 				    			$('#choice-period-text').after( showAllItemsOfSzvCheckboxWrapIfSentYes() );
 				    			makeCheckedSzvIfBtnBack();		    			
 				    }
+				    
+				    if ( $('#szv-quest-no').prop('checked') ) {
+				    			fillSzvCheckboxWrapIfSentYes();
+				    } 			    
 			} 
 
 			if ( $('#one-face-yes').prop('checked') ) {

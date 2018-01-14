@@ -329,19 +329,19 @@
                         '</div>' + 
                         '<div class="month">' + 
                             '<label>' +
-                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[0][1] + '-' + year + '"' + ' checked>' + '&nbsp;' + 
                                 whatMonth(quartNum)[0][0] +
                             '</label>' +
                         '</div>' +                        
                         '<div class="month">' + 
                             '<label>' +
-                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[1][1] + '-' + year + '"' + ' checked>' + '&nbsp;' +
                                 whatMonth(quartNum)[1][0] + 
                             '</label>' +
                         '</div>' +                        
                         '<div class="month">' + 
                             '<label>' +
-                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' +
+                                '<input type="checkbox" name="final-szv-' + whatMonth(quartNum)[2][1] + '-' + year + '"' + ' checked>' + '&nbsp;' +
                                 whatMonth(quartNum)[2][0] + 
                             '</label>' +
                         '</div>' +                          
@@ -377,57 +377,44 @@
                         quartersWillSend('#decl-profit-wrap', 'decl-profit-final');
                 } else {
                     quartersWillSend('#decl-one-wrap', 'decl-one-final');
-                }
-
-                quartersWillSend('#count-ins-wrap', 'count-ins-final');
-                quartersWillSend('#count-fss-wrap', 'count-fss-final');
-
-                if (szv) {                    
-                    $('#szv-m-wrap').show();
-                    
-                    if ( $('#szv-quest-no').prop('checked') ) {
-                            $('#szv-m-wrap').append( szvWillSend() );
-                    } else {
-                        $('#szv-m-wrap').append( szvWillSend() );
-
-                        $('#szv-m-wrap input:checkbox').each(function(indx, el) {
-                            fakeId =  'szv-sent-' + $(el).attr('name').substring(10);
-                            
-                            if ( $.inArray(fakeId, szvCheckboxCheckedByUser) !== -1 ) {
-                                   $(el).removeAttr('checked'); 
-                                   $(el).parent().parent().hide();
-                            } 
-                        });
-
-                        deleteQuarterNameSzv();                   
-                    }                  
-                }                 
-
-                if ( !(noCheckedFourQuart() ) ) {
-                       yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
-                       yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
-                       yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');  
-                }                
+                }              
         }
 
         if ( $('#simple').prop('checked') ) {
                 if ( !(noCheckedFourQuart() ) ) {
                        yearsWillSend ('#decl-usn-wrap', 'decl-usn', 'Налоговая декларация по УСН за ');
-                }   
-                
-                quartersWillSend('#count-ins-wrap', 'count-ins-final');
-                quartersWillSend('#count-fss-wrap', 'count-fss-final');  
-                
-                if (szv === true) {
-                     quartersWillSend('#szv-m-wrap', 'szv-final');
-                } 
-                
-                if ( !(noCheckedFourQuart() ) ) {
-                       yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
-                       yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
-                       yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');                     
-                }   
+                }           
         }
+
+        quartersWillSend('#count-ins-wrap', 'count-ins-final');
+        quartersWillSend('#count-fss-wrap', 'count-fss-final');
+
+        if (szv) {                    
+            $('#szv-m-wrap').show();
+            
+            if ( $('#szv-quest-no').prop('checked') ) {
+                    $('#szv-m-wrap').append( szvWillSend() );
+            } else {
+                $('#szv-m-wrap').append( szvWillSend() );
+
+                $('#szv-m-wrap input:checkbox').each(function(indx, el) {
+                    fakeId =  'szv-sent-' + $(el).attr('name').substring(10);
+                    
+                    if ( $.inArray(fakeId, szvCheckboxCheckedByUser) !== -1 ) {
+                           $(el).removeAttr('checked'); 
+                           $(el).parent().parent().hide();
+                    } 
+                });
+
+                deleteQuarterNameSzv();                   
+            }                  
+        }                 
+
+        if ( !(noCheckedFourQuart() ) ) {
+               yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
+               yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
+               yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');  
+        }  
     }
 
 
@@ -525,28 +512,8 @@
             $('#span-we-will-send').text('Мы за Вас подготовим и сдадим за ' + checkedQuartersTaxSystem[0] + ':' );
             $('.quarters-will-send').hide();
             $('.quarter-name').hide();
-            $('.month').hide();
-            
         } else $('#span-we-will-send').text('Мы за Вас подготовим и сдадим:');
     }
-
-
-    // если на экране сзв юзер отметил все галочки, то в will-send сзв не показывается
-    // function delSzvIfWillSendIfZero () {
-    //     var i = 0;
-    //     console.log( $('.quart-months-wrap').length );
-    //     if ( $('.quart-months-wrap').length === 1) {
-    //            $('.quart-months-wrap').children('label').children('input').each(function(indx, el) {
-    //                 if ( $(el).prop('checked') ) {
-    //                         i++;
-    //                 } 
-    //            });               
-    //     }
-    //     if (i === 3) {
-    //         $('#szv-m-wrap').hide();
-    //     }
-    // }
-
 
 
     // управляет массивом SzvCheckboxCheckedByUser
@@ -559,14 +526,14 @@
         var indexInput = szvCheckboxCheckedByUser.indexOf(inputId);
 
         if ( input.prop('checked') && 
-                 $.inArray(inputId, szvCheckboxCheckedByUser) === -1 ) 
+                $.inArray(inputId, szvCheckboxCheckedByUser) === -1 ) 
         {
-                 szvCheckboxCheckedByUser.push(inputId);
+                szvCheckboxCheckedByUser.push(inputId);
         }       
 
         if ( input.prop('checked') === false ) {
                 if ( $.inArray(inputId, szvCheckboxCheckedByUser) !== -1 ) {
-                        delete szvCheckboxCheckedByUser[indexInput];
+                       delete szvCheckboxCheckedByUser[indexInput];
                 }           
         }
     }
@@ -594,7 +561,6 @@
 
 
     function calculateFinalSumCompany () {
-        showArrays ();
         var finalSum = 0;
         var baseGeneral = 1499;  
         var baseSimple = 999;
@@ -603,38 +569,51 @@
         for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {
                 if ( $('#general').prop('checked') ) {                    
                     if ( $('#trans-no').prop('checked') && $('#one-face-yes').prop('checked') ) {
-                            finalSum = finalSum + baseGeneral;
+                            finalSum += baseGeneral;
                     } 
 
                     if ( $('#trans-yes').prop('checked') && $('#one-face-yes').prop('checked') ||
                          $('#trans-no').prop('checked') && $('#one-face-no').prop('checked') )
                     {
-                            finalSum = finalSum + baseGeneral + 500;
+                            finalSum += baseGeneral + 500;
                     } 
 
                     if ( $('#trans-yes').prop('checked') && $('#one-face-no').prop('checked') ) {
-                            finalSum = finalSum + baseGeneral + 1000;
+                            finalSum += baseGeneral + 1000;
                     }                  
                 }
 
                 if ( $('#simple').prop('checked') ) {                    
                     if ( $('#one-face-yes').prop('checked') ) {
-                            finalSum = finalSum + baseSimple;
+                            finalSum += baseSimple;
                     } 
 
                     if ( $('#one-face-no').prop('checked') ) {
-                            finalSum = finalSum + baseSimple + 500;
+                            finalSum += baseSimple + 500;
                     }
-                }
+                }                
 
                 if ( isFourQuarter( parseInt(checkedQuartersTaxSystem[i][0] ) ) ) {
-                        finalSum = finalSum + 1000;
+                        finalSum += 1000;
                 }
 
         }
-        
+       
         return finalSum;
     }
+
+
+    // если юзер при ответе сзв-да отметил все галочки,
+    // то сзв в will-send не будет показано
+    function hideSzvIfSzvYesAndAllCheckedByUser () {
+        if ( $('.month:visible').length === 0 ) {
+                $('#szv-m-wrap').hide();
+                return true;
+        }
+    }
+
+
+
 
     /* End Company - Разное */
     // -------------------------------------------------------------------------------------
