@@ -11,6 +11,19 @@ a {
 	text-decoration: none;	
 }
 
+.uk-wrap {
+	margin-left: 80px;
+}
+
+#btn-next-tax-system: {
+	margin-left: -5px;
+}
+
+#tax-system-section > label {
+	font-size: 18px;
+	color: #028090;
+}
+
 .display-none {
 	display: none;
 }
@@ -119,10 +132,6 @@ a {
 	right: 0%;
 }
 
-messenger-img-mob {
-
-}
-
 .main-screen {
 	background-color: #F5F5F5;
 	height: 100vh;
@@ -153,7 +162,7 @@ messenger-img-mob {
 	font-weight: 700;
 	font-family: 'Open Sans Condensed', sans-serif;
 	margin-top: 20px;
-    letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
 .main-screen-mob h1 {
@@ -161,7 +170,7 @@ messenger-img-mob {
 	font-weight: 700;
 	font-family: 'Open Sans Condensed', sans-serif;
 	margin-top: 20px;
-    letter-spacing: 2px;
+  letter-spacing: 2px;
 }
 
 .main-screen h3 {
@@ -634,7 +643,11 @@ messenger-img-mob {
 	padding-left: 70px;
 	padding-right: 70px;
 	font-size: 16px;
-	margin-top: 20px; 
+/*	margin-top: 20px;*/ 
+}
+
+p.question {
+	margin-top: 23px;
 }
 
 .price-page {
@@ -673,14 +686,36 @@ input[type="checkbox"] {
 	margin-top: 10px;
 }
 
+#another-quarters-text {
+	text-decoration: none;
+	border-bottom: 1px #028090 dashed;
+	color: #23527c;
+	cursor: pointer;
+}
+
+#another-quarters-wrap {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}	
+
+#another-quarters-text:hover {
+	color: #330099;
+}
+
 .question {
 	font-family: Open Sans;
 	font-size: 22px;
 }
 
-.tax-system-answer {
+.answer {
 	color: #23527C;
 	font-size: 18px;
+}
+
+#form-tax-system {
+/*	padding-left: 70px;
+	padding-right: 70px;*/
+	font-size: 16px;
 }
 
 #form-tax-system button,
@@ -694,7 +729,7 @@ input[type="checkbox"] {
 	border-radius: 2px;
 	font-size: 18px;
 	margin-right: 10px;
-	margin-bottom: 30px;
+/*	margin-bottom: 30px;*/
 	margin-top: 15px;
 }
 
@@ -825,7 +860,7 @@ input[type="checkbox"] {
 }
 
 #final-sum-wrap {
-    background-color: rgb(51, 153, 51);
+    background-color: #028090;
     width: 410px;
     color: rgb(255, 255, 255);
     font-size: 20px;
