@@ -21,6 +21,8 @@
       <div style="display: none;" id="decl-usn-wrap"></div>      
       <div style="display: none;" id="decl-ndfl-wrap"></div>
 
+      <?php require_once 'final-sum.php'; ?>
+      
       <button id="btn-back-will-send" onclick="return false;">Назад</button>
     
     </div>

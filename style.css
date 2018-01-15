@@ -15,9 +15,6 @@ a {
 	margin-left: 80px;
 }
 
-#btn-next-tax-system: {
-	margin-left: -5px;
-}
 
 #tax-system-section > label {
 	font-size: 18px;
@@ -729,8 +726,13 @@ input[type="checkbox"] {
 	border-radius: 2px;
 	font-size: 18px;
 	margin-right: 10px;
-/*	margin-bottom: 30px;*/
 	margin-top: 15px;
+}
+
+#form-tax-system #btn-next-tax-system {
+	display: block;
+	margin-top: 0;
+	/*margin-left: -5px;*/
 }
 
 .div-quarters label:hover {
@@ -841,14 +843,16 @@ input[type="checkbox"] {
 	font-weight: bold;
 }
 
-#choice-quarters > i > span,
+#choice-quarters > i,
+#years-wrap span,
 #another-quarters-text,
 .div-quarters,
 .periods-will-send,
 .month > span,
 .month div label,
 #years-simple,
-#div-years {
+#div-years,
+.div-years {
 	margin-left: 40px;
 }
 

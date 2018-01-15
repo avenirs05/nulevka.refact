@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <form id="form-tax-system" action="handler.php" method="post" novalidate>
         <div id="tax-system-section">
-          <p>Выберите систему налогообложения:</p>
+          <p class="question">Выберите систему налогообложения:</p>
           
           <?php 
               $taxSystem = array(

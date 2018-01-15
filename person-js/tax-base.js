@@ -18,6 +18,7 @@ $(function () {
 	    $('#tax-base-section').hide();
 	    $('#will-send-section').show();
 	    showReportsWillSendIp();
+	    $('#final-sum-digits').text( calculateFinalSumCompany() );
 	});
 
 });

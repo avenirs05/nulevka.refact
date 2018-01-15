@@ -560,6 +560,17 @@
     }
 
 
+    // если юзер при ответе сзв-да отметил все галочки,
+    // то сзв в will-send не будет показано
+    function hideSzvIfSzvYesAndAllCheckedByUser () {
+        if ( $('.month:visible').length === 0 ) {
+                $('#szv-m-wrap').hide();
+                return true;
+        }
+    }
+
+
+    // Калькулятор если ООО
     function calculateFinalSumCompany () {
         var finalSum = 0;
         var baseGeneral = 1499;  
@@ -598,18 +609,40 @@
                 }
 
         }
+
+        if ( $('.month:visible').length === 0 && 
+             $('#one-face-no').prop('checked')  ) 
+        {
+            finalSum -= 500;
+        }
        
         return finalSum;
     }
 
 
-    // если юзер при ответе сзв-да отметил все галочки,
-    // то сзв в will-send не будет показано
-    function hideSzvIfSzvYesAndAllCheckedByUser () {
-        if ( $('.month:visible').length === 0 ) {
-                $('#szv-m-wrap').hide();
-                return true;
+    // Калькулятор если ИП
+    function calculateFinalSumCompany () {
+        var finalSum = 0;
+        var base = 299;  
+        var isFourQuart;       
+
+        if ( $('#general').prop('checked') ) {
+                for (var i = 0; i < checkedQuartersTaxSystem.length; i++) {    
+                        finalSum += base;
+
+                        if ( isFourQuarter( parseInt(checkedQuartersTaxSystem[i][0] ) ) )  {
+                              finalSum += 200;
+                        }
+                }
         }
+
+        if ( $('#simple').prop('checked') ) {
+                for (var i = 0; i < checkedYearsTaxSystem.length; i++) {    
+                        finalSum += base;
+                }
+        }
+        
+        return finalSum;
     }
 
 
