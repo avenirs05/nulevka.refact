@@ -570,6 +570,28 @@
     }
 
 
+    // Разделяет группы разрядов
+    function separateThousands (num) {
+        if (num == 3) {
+            return num;
+        }
+        
+        num = String(num);
+
+        switch(num.length) {
+          case 4:
+            num = num[0] + ' ' + num[1] + num[2] + num[3]; 
+          break;  
+          
+          case 5:
+            num = num[0] + num[1] + ' ' + num[2] + num[3] + num[4]; 
+          break; 
+        }
+
+        return num;
+    }
+
+
     // Калькулятор если ООО
     function calculateFinalSumCompany () {
         var finalSum = 0;
@@ -615,13 +637,14 @@
         {
             finalSum -= 500;
         }
-       
-        return finalSum;
+
+        // return finalSum;
+        return separateThousands(finalSum);
     }
 
 
     // Калькулятор если ИП
-    function calculateFinalSumCompany () {
+    function calculateFinalSumIp () {
         var finalSum = 0;
         var base = 299;  
         var isFourQuart;       
@@ -642,7 +665,7 @@
                 }
         }
         
-        return finalSum;
+        return separateThousands(finalSum);
     }
 
 

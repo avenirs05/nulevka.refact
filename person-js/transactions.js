@@ -27,7 +27,7 @@ $(function () {
 	$("#btn-next-trans").click(function() {
 			$('#transactions-section').hide();
 	    showReportsWillSendIp();    
-	    $('#final-sum-digits').text( calculateFinalSumCompany() );
+	    $('#final-sum-digits').text( calculateFinalSumIp() );
 	});
 
 });
