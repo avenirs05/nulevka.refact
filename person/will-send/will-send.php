@@ -1,6 +1,4 @@
-﻿<div id="will-send-section" style="display: none" class="container-fluid questions-wrapper">
-  <div class="row">
-    <div class="col-md-12">
+﻿<div id="will-send-section" style="display: none">
       
       <span id="span-we-will-send">Мы за Вас подготовим и отправим на email</span>
       
@@ -23,10 +21,8 @@
 
       <?php require_once 'final-sum.php'; ?>
 
-      <?php require_once 'from-customer.php'; ?>    
-      
-    </div>
-  </div>
+      <?php require_once 'from-customer.php'; ?>         
+
 </div>
 
       </form>

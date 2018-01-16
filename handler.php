@@ -18,9 +18,7 @@
 
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="functions-company.js"></script>
-    <script src="functions-general.js"></script>
-    <script src="events-company.js"></script>
+    <script src="functions.js"></script>
     <script src="events-general.js"></script>
 
     <!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter45030163 = new Ya.Metrika({ id:45030163, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks"); </script> <noscript><div><img src="https://mc.yandex.ru/watch/45030163" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
@@ -32,7 +30,7 @@
     <!-- {/literal} END JIVOSITE CODE -->
 </head>
 <body>
-<?php //print_r($_POST); ?>
+<?php print_r($_POST); ?>
 <?php require_once 'modals.php'; ?>
 <?php require_once 'header.php'; ?> 
 
@@ -74,9 +72,7 @@
 </div>
 
 <?php 
-// if ($_SERVER['REMOTE_ADDR'] == '188.162.65.127') {
-//     exit();
-// }
+
 require_once 'functions.php';
 //echo($_POST['base']);
 
@@ -130,7 +126,7 @@ if (isset($_GET['submit-not-know-ooo'])) {
             'Ip-адрес: ' . $_SERVER['REMOTE_ADDR'];
 
     mail($to, $subject, $message, $headers);
-    }
+}
 
 if (isset($_GET['submit-envd-ip'])) {
     $message = '<html><head><title></title></head><body>

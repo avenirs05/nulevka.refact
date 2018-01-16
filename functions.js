@@ -679,18 +679,5 @@
     }
 
 
-    // Передача итоговой суммы в форму Яндекс-кассы через скрытое поле
-    $('#submit-go-to-pay-ip').click(function() {
-        var totalAmount = $('#final-sum-digits').text();
-        $('#total-amount').val(totalAmount);
-    });
-
-
-
-
-
-
-
-
 
 
