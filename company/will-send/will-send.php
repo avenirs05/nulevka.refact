@@ -52,15 +52,11 @@
 
         <?php require_once 'final-sum.php'; ?>
 
-        <button id="btn-back-will-send" onclick="return false;">Назад</button>  
+        <?php require_once 'from-customer.php'; ?>      
 
       </div>
-
-
-
+      
     </div>
   </div>
 </div>
 
-</body>
-</html>

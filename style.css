@@ -11,6 +11,23 @@ a {
 	text-decoration: none;	
 }
 
+#div-from-customer #btn-back-will-send {
+    background-color: #339933;
+    color: #ffffff;
+    width: 120px;
+    height: 40px;
+    border: medium none;
+    border-radius: 2px;
+    font-size: 18px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+#div-from-customer #btn-back-will-send:hover {
+    background-color: #E7382B;
+}
+
 .uk-wrap {
 	margin-left: 80px;
 }
@@ -644,7 +661,7 @@ a {
 }
 
 p.question {
-	margin-top: 23px;
+	margin-top: 21px;
 }
 
 .price-page {
@@ -732,7 +749,6 @@ input[type="checkbox"] {
 #form-tax-system #btn-next-tax-system {
 	display: block;
 	margin-top: 0;
-	/*margin-left: -5px;*/
 }
 
 .div-quarters label:hover {

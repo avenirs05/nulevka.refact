@@ -1,7 +1,7 @@
 ﻿<div class="container-fluid questions-wrapper">
   <div class="row">
     <div class="col-md-12">
-      <form id="form-tax-system" action="handler.php" method="post" novalidate>
+      <form id="form-tax-system" action="../../handler.php" method="post" novalidate>
         <div id="tax-system-section">
           <p class="question">Выберите систему налогообложения:</p>
           

@@ -22,9 +22,14 @@
       <div style="display: none;" id="decl-ndfl-wrap"></div>
 
       <?php require_once 'final-sum.php'; ?>
+
+      <?php require_once 'from-customer.php'; ?>    
       
-      <button id="btn-back-will-send" onclick="return false;">Назад</button>
-    
+    </div>
+  </div>
+</div>
+
+      </form>
     </div>
   </div>
 </div>

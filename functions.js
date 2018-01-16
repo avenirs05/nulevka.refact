@@ -99,13 +99,6 @@
                 return true; 
         }
     }
-    /* End Company - Tax-system*/
-    //-----------------------------------------------------------------------------------------
-
-
-   
-    // ----------------------------------------------------------------------------------------
-    /* Company - Разное */
 
 
     // Формирует массив szvCheckboxWrapIfSentYes, в котором каждый его элемент - это html-wrapper 
@@ -414,7 +407,7 @@
                yearsWillSend('#buh-rep-ifns-wrap', 'buh-rep-ifns-final', 'Бухгалтерская (финансовая) отчетность в ИФНС за ');
                yearsWillSend('#buh-rep-stat-wrap', 'buh-rep-stat-final', 'Бухгалтерская (финансовая) отчетность в Росстат за ');
                yearsWillSend('#workers-cnt-wrap', 'workers-cnt-final', 'Сведения о среднесписочной численности работников за ');  
-        }  
+        }
     }
 
 
@@ -592,6 +585,24 @@
     }
 
 
+    // Убирает группы разрядов и преобразует в число
+    function unSeparateThousands (str) {
+        var res = '';
+        
+        for (var i = 0; i < str.length; i++) {
+              if (str[i] === ' ') {
+                    continue;
+              }
+              
+              res += str[i];
+        }
+
+        res = Number(res);
+        
+        return res;
+    }
+
+
     // Калькулятор если ООО
     function calculateFinalSumCompany () {
         var finalSum = 0;
@@ -638,7 +649,6 @@
             finalSum -= 500;
         }
 
-        // return finalSum;
         return separateThousands(finalSum);
     }
 
@@ -669,9 +679,18 @@
     }
 
 
+    // Передача итоговой суммы в форму Яндекс-кассы через скрытое поле
+    $('#submit-go-to-pay-ip').click(function() {
+        var totalAmount = $('#final-sum-digits').text();
+        $('#total-amount').val(totalAmount);
+    });
 
 
-    /* End Company - Разное */
-    // -------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 

@@ -44,3 +44,5 @@
     <?php require_once 'tax-base/tax-base.php'; ?>
     <?php require_once 'szv/szv.php'; ?>
     <?php require_once 'will-send/will-send.php'; ?>
+</body>
+</html>
