@@ -31,4 +31,11 @@ $(function () {
 				smartCheckUncheck(); 
 		});
 
+		// Передача итоговой суммы в форму Яндекс-кассы через скрытое поле
+		$('#submit-go-to-pay-ip').click(function() {
+		    var totalAmount = $('#final-sum-digits').text();
+		    totalAmount = unSeparateThousands(totalAmount);
+		    $('#total-amount').val(totalAmount);
+		});
+
 });

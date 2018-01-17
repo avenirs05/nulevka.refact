@@ -596,10 +596,8 @@
               
               res += str[i];
         }
-
-        res = Number(res);
         
-        return res;
+        return Number(res);
     }
 
 

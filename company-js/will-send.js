@@ -59,4 +59,26 @@ $(function () {
 				}
 		});
 
+
+		// Передача итоговой суммы в форму Яндекс-кассы через скрытое поле
+		$('#submit-go-to-pay-ooo').click(function() {
+		    var totalAmount = $('#final-sum-digits').text();
+		    totalAmount = unSeparateThousands(totalAmount);
+		    $("#total-amount").val(totalAmount);
+		}); 
+
+
+		// Валидация поля ИНН в форме
+		var regExpInn = /^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+
+		$('#inn').blur(function() {
+		    if ( $(this).val().match(regExpInn) == null ) {
+		        $(this).css('color', 'red');
+		    } else $(this).css('color', '#000000');
+		});
+
+		$('#inn').focus(function() {
+		    $(this).css('color', '#000000');
+		});
+
 });

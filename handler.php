@@ -30,10 +30,10 @@
     <!-- {/literal} END JIVOSITE CODE -->
 </head>
 <body>
-<?php print_r($_POST); ?>
+
 <?php require_once 'modals.php'; ?>
 <?php require_once 'header.php'; ?> 
-
+<?php require_once 'functions.php'; ?> 
 
 
 <div class="container-fluid questions-wrapper">
@@ -73,9 +73,7 @@
 
 <?php 
 
-require_once 'functions.php';
-//echo($_POST['base']);
-
+d($_POST); 
 
 $headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
@@ -229,6 +227,8 @@ if (isset($_POST['submit-go-to-pay-ip'])) {
     
     mail($to, $subject, $message, $headers);  
 }
+
+echo isGeneralOrSimpleTaxSystemCompany();
 
 ?>
 
