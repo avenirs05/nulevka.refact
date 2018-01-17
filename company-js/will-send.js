@@ -27,6 +27,10 @@ $(function () {
 				$('.quarters-will-send').remove();
 				$('.years-will-send').remove();
 				$('.szv-wrap-final').remove();
+
+				// скрыть поля from-customer некоторые
+				$('#cnt-workers').parent().hide();     
+				$('#snils-dir').parent().hide(); 
 		});
 
 

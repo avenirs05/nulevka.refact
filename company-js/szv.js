@@ -42,10 +42,12 @@ $(function () {
 			addPhraseIfOneQuarter();
 
 			if ( $('#szv-quest-yes').prop('checked') ) {
-						hideSzvIfSzvYesAndAllCheckedByUser();
+						hideSzvIfSzvYesAndAllCheckedByUser();						
 			}			
 
 			$('#final-sum-digits').text( calculateFinalSumCompany() );
+
+			showSomeFieldsFromCustomer();
 	});
 
 	

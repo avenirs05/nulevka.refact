@@ -56,6 +56,8 @@ $(function () {
 							showReportsWillSendCompany(false); 		
 							$('#final-sum-digits').text( calculateFinalSumCompany() );		 
 			}  
+
+			showSomeFieldsFromCustomer();
 	});
 
 });

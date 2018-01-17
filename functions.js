@@ -677,5 +677,18 @@
     }
 
 
+    // Если Company и 4-й кв-л, то в форме от клиента в will-send добавляется поле "Количество работников"
+    // Если Company и в will-send есть СЗВ, то в форме от клиента добавляется поле "СНИЛС директора"
+    function showSomeFieldsFromCustomer () {
+        if ( noCheckedFourQuart() !== true ) {
+             $('#cnt-workers').parent().show();
+        } 
+
+        if ( $('.month:visible').length > 0 ) {
+              $('#snils-dir').parent().show(); 
+        }        
+    }
+
+
 
 

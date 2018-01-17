@@ -35,7 +35,7 @@ a {
 
 #tax-system-section > label {
 	font-size: 18px;
-	color: #028090;
+	color: #23527c;
 }
 
 .display-none {
@@ -662,6 +662,7 @@ a {
 
 p.question {
 	margin-top: 21px;
+	margin-bottom: 20px;
 }
 
 .price-page {
@@ -703,7 +704,7 @@ input[type="checkbox"] {
 #another-quarters-text {
 	text-decoration: none;
 	border-bottom: 1px #028090 dashed;
-	color: #23527c;
+	color: rgb(2, 128, 144);
 	cursor: pointer;
 }
 
@@ -806,13 +807,13 @@ input[type="checkbox"] {
 #label-base-inc, #label-szv-quest-yes  {
 	font-size: 18px;
 	margin-top: 15px;
-	color: #028090;
+	color: #23527c;
 }
 
 #label-trans-no, #label-one-face-no,
 #label-base-inc-spent, #label-szv-quest-no {
 	font-size: 18px;
-	color: #028090;
+	color: #23527c;
 }
 
 .month {

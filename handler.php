@@ -165,13 +165,14 @@ if (isset($_GET['submit-not-know-ip'])) {
     mail($to, $subject, $message, $headers);
 }
 
+
 if (isset($_POST['submit-go-to-pay-ooo'])) {    
     $message = '<html><head><title></title></head><body>
     <b>Кто обращается:</b> ООО<br><br>' .
     isGeneralOrSimpleTaxSystemCompany() .
     findQuart() .
     findUK() .
-    showQuestTranz() .
+    showQuestTrans() .
     showBase() .
     showOneFace() .
     showSzvQuest() .
@@ -199,6 +200,7 @@ if (isset($_POST['submit-go-to-pay-ooo'])) {
     
     mail($to, $subject, $message, $headers);  
 }
+
 
 if (isset($_POST['submit-go-to-pay-ip'])) {   
     $message = '<html><head><title></title></head><body>
@@ -229,6 +231,26 @@ if (isset($_POST['submit-go-to-pay-ip'])) {
 }
 
 echo isGeneralOrSimpleTaxSystemCompany();
+echo findQuart();
+echo findUK();
+echo showQuestTrans();
+echo showBase();
+echo showOneFace();
+echo showSzvQuest();
+echo showCntWorkers();
+echo showSnilsDir();
+echo showNameOfCompany();
+echo showInnOfCompany();
+echo showOktmoOfCompany();
+echo showPhoneOfCompany();
+echo showEmailOfCompany();
+echo '<span style="font-size: 20px;">Мы Вам подготовим:</span><br><br>';
+echo willSendDeclOne();
+echo willSendDeclNds();
+echo willSendDeclProfit();
+echo willSendCountIns();
+echo willSendCountFss();
+echo willSendSzv();
 
 ?>
 
