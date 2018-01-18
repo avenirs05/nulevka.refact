@@ -190,10 +190,10 @@ if (isset($_POST['submit-go-to-pay-ooo'])) {
     willSendCountIns() .
     willSendCountFss() .
     willSendSzv() .
-    willSendBuhRepIfns() .
+    willSendBuhRepIfns() . 
     willSendBuhRepStat() .
-    willSendWorkersCnt() .
-    willSendDeclUsn() . 
+    willSendRepWorkersCnt() .
+    willSendDeclUsn() .
     showTotalAmount() .
     'Ip-адрес: ' . $_SERVER['REMOTE_ADDR'] .
     '</body></html>';
@@ -205,52 +205,35 @@ if (isset($_POST['submit-go-to-pay-ooo'])) {
 if (isset($_POST['submit-go-to-pay-ip'])) {   
     $message = '<html><head><title></title></head><body>
     <b>Кто обращается:</b> ИП<br><br>' .
-    isGeneralOrSimpleTaxSystemIp() .
-    showBaseIp() .
-    findQuart() .
-    findYearIfSimpleIP() .
-    showNameOfIp() .
-    showInnOfIp() .
-    showOktmoOfIp() .
-    showPhoneOfIP() .
-    showEmailOfIp() .
-    showPaspSerOfIp() .
-    showPaspNumOfIp() .
-    showPaspDateOfIssueOfIp() .
-    showPaspWhoIssueOfIp() .
-    showPaspKpOfIp() . 
+    // isGeneralOrSimpleTaxSystem() .
+    // showBaseIp() .
+    // findQuart() .
+    // findYearIfSimpleIP() .
+    // showNameOfIp() .
+    // showInnOfIp() .
+    // showOktmoOfIp() .
+    // showPhoneOfIP() .
+    // showEmailOfIp() .
+    // showPaspSerOfIp() .
+    // showPaspNumOfIp() .
+    // showPaspDateOfIssueOfIp() .
+    // showPaspWhoIssueOfIp() .
+    // showPaspKpOfIp() . 
     '<span style="font-size: 20px;">Мы Вам подготовим:</span><br><br>' .
-    willSendDeclNdsIp() .    
-    willSendDeclNdflIp() .
-    willSendDeclYearIp () . 
-    showTotalAmount() .
+    // willSendDeclNdsIp() .    
+    // willSendDeclNdflIp() .
+    // willSendDeclYearIp () . 
+    // showTotalAmount() .
     'Ip-адрес: ' . $_SERVER['REMOTE_ADDR'] .
     '</body></html>';
     
     mail($to, $subject, $message, $headers);  
 }
 
-echo isGeneralOrSimpleTaxSystemCompany();
-echo findQuart();
-echo findUK();
-echo showQuestTrans();
+echo isGeneralOrSimpleTaxSystem();
 echo showBase();
-echo showOneFace();
-echo showSzvQuest();
-echo showCntWorkers();
-echo showSnilsDir();
-echo showNameOfCompany();
-echo showInnOfCompany();
-echo showOktmoOfCompany();
-echo showPhoneOfCompany();
-echo showEmailOfCompany();
-echo '<span style="font-size: 20px;">Мы Вам подготовим:</span><br><br>';
-echo willSendDeclOne();
-echo willSendDeclNds();
-echo willSendDeclProfit();
-echo willSendCountIns();
-echo willSendCountFss();
-echo willSendSzv();
+echo findQuart();
+
 
 ?>
 

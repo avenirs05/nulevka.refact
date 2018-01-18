@@ -185,7 +185,7 @@
     }    
 
 
-    function isGeneralOrSimpleTaxSystemCompany () {
+    function isGeneralOrSimpleTaxSystem () {
         if ($_POST['tax-system'] == 'general') {
             return '<b>Система налогообложения:</b> общая<br><br>';
         } 
@@ -196,10 +196,6 @@
 
 
     function findQuart () {
-        if (isset($_POST['submit-go-to-pay-ip']) && ($_POST['tax-system'] == 'simple-ip')) {
-            return null;
-        }
-
         $res = '<b>Периоды:</b><br>';
         $pattern = '#^qrt#';        
 
@@ -270,7 +266,7 @@
             }
 
             if ($_POST['base'] == 'base-inc-spent') { 
-                return '<b>База налогообложения: </b>Доходы - Расходы<br><br>'; 
+                return '<b>База налогообложения: </b>Доходы - Расходы<br>'; 
             }
         }
     }
@@ -570,64 +566,74 @@
     
 
     function willSendBuhRepIfns () {
-        $str = ""; 
-        if (isset($_POST['buh-rep-ifns-4-2017'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в ИФНС за</b> 2017 год' . '<br>'; 
-        }
-        if (isset($_POST['buh-rep-ifns-4-2016'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в ИФНС за</b> 2016 год' . '<br>'; 
-        }
-        if (isset($_POST['buh-rep-ifns-4-2015'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в ИФНС за</b> 2015 год' . '<br>'; 
-        }
+        $res = ""; 
 
-        return $str . '<br>' . '<br>';
+        $pattern = '#^buh-rep-ifns-final#';        
+
+        foreach ($_POST as $key => $value) {
+            if (preg_match($pattern, $key)) {
+                $res .= '<b>Бухгалтерская(финансовая) отчетность в ИФНС за </b>' 
+                     . substr($key, 19) 
+                     . ' год<br>';
+            }
+        }    
+      
+        return $res . '<br>';
     }
+
 
     function willSendBuhRepStat () {
-        $str = ""; 
-        if (isset($_POST['buh-rep-stat-4-2017'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в Росстат за</b> 2017 год' . '<br>'; 
-        }
-        if (isset($_POST['buh-rep-stat-4-2016'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в Росстат за</b> 2016 год' . '<br>'; 
-        }
-        if (isset($_POST['buh-rep-stat-4-2015'])) { 
-            $str .= '<b>Бухгалтерская(финансовая) отчетность в Росстат за</b> 2015 год' . '<br>'; 
-        }
+        $res = ""; 
 
-        return $str . '<br>' . '<br>';
+        $pattern = '#^buh-rep-stat-final#';        
+
+        foreach ($_POST as $key => $value) {
+            if (preg_match($pattern, $key)) {
+                $res .= '<b>Бухгалтерская(финансовая) отчетность в Росстат за </b>' 
+                     . substr($key, 19) 
+                     . ' год<br>';
+            }
+        }    
+        
+        return $res . '<br>';
     }
 
-    function willSendWorkersCnt () {
-        $str = "";
-        if (isset($_POST['workers-cnt-4-2017'])) {
-            $str .= '<b>Сведения о среднесписочной численности работников за</b> 2017 год' . '<br>';
-        }
-        if (isset($_POST['workers-cnt-4-2016'])) {
-            $str .= '<b>Сведения о среднесписочной численности работников за</b> 2016 год' . '<br>';
-        }
-        if (isset($_POST['workers-cnt-4-2015'])) {
-            $str .= '<b>Сведения о среднесписочной численности работников за</b> 2015 год' . '<br>';
-        }
 
-        return $str . '<br>' . '<br>';
+    function willSendRepWorkersCnt () {
+        $res = ""; 
+
+        $pattern = '#^workers-cnt-final#';        
+
+        foreach ($_POST as $key => $value) {
+            if (preg_match($pattern, $key)) {
+                $res .= '<b>Сведения о среднесписочной численности работников за </b>' 
+                     . substr($key, 18) 
+                     . ' год<br>';
+            }
+        }    
+        
+        return $res . '<br>';
     }
+
 
     function willSendDeclUsn () {
-        $str = "";
-        if (isset($_POST['decl-usn-4-2017'])) {
-            $str .= '<b>Налоговая декларация по УСН(годовая) за</b> 2017 год' . '<br>';
-        }
-        if (isset($_POST['decl-usn-4-2016'])) {
-            $str .= '<b>Налоговая декларация по УСН(годовая) за</b> 2016 год' . '<br>';
-        }
-        if (isset($_POST['decl-usn-4-2015'])) {
-            $str .= '<b>Налоговая декларация по УСН(годовая) за</b> 2015 год' . '<br>';
+        $res = "";
+
+        if ($_POST['tax-system'] == 'simple') {
+            $pattern = '#^decl-usn#';        
+
+            foreach ($_POST as $key => $value) {
+                if (preg_match($pattern, $key)) {
+                    $res .= '<b>Налоговая декларация по УСН(годовая) за </b>' 
+                         . substr($key, 9) 
+                         . ' год<br>';
+                }
+            }   
         }
 
-        return $str . '<br>' . '<br>';
+        return $res . '<br>';
     }
+
 
     function willSendDeclNdsIp () {
         $str = "";
@@ -678,5 +684,5 @@
         if (isset($_POST['total-amount'])) {
                 $str .= '<b>К оплате: </b>' . $_POST['total-amount'] .  ' руб.<br>';    
         }
-        return $str . '<br>' . '<br>';
+        return $str . '<br>';
     }

@@ -11,6 +11,11 @@ a {
 	text-decoration: none;	
 }
 
+.quart-months-wrap {
+	margin-bottom: 20px;
+	margin-left: 40px;
+}
+
 #div-from-customer #btn-back-will-send {
     background-color: #339933;
     color: #ffffff;
