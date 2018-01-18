@@ -29,6 +29,13 @@ $(function () {
 				$('#decl-nds').change(makeCheckedChildChecks);
 				$('#decl-one').change(makeCheckedChildChecks);
 				smartCheckUncheck(); 
+
+				// паспортные данные
+				$('#pasp-ser-ip').parent().hide();
+				$('#pasp-num-ip').parent().hide();
+				$('#pasp-date-issue-ip').parent().hide();
+				$('#pasp-who-issue-ip').parent().hide();
+				$('#pasp-kp-ip').parent().hide();
 		});
 
 		// Передача итоговой суммы в форму Яндекс-кассы через скрытое поле

@@ -148,7 +148,7 @@
         $labelTextsArr = $years['labelTexts'];
        
         foreach ($labelTextsArr as $value) {
-            $inputIds[] = 'qrt-' . mb_substr($value, 0, 4) . '-' . 'ip-simple';
+            $inputIds[] = 'year-' . mb_substr($value, 0, 4) . '-' . 'ip-simple';
         }
 
         return $inputIds; 
@@ -209,6 +209,22 @@
         return $res . '<br>';   
     }
 
+    function findQuartIp () {
+        if ($_POST['tax-system'] == 'general') {
+                $res = '<b>Периоды:</b><br>';
+                $pattern = '#^qrt#';        
+
+                foreach ($_POST as $key => $value) {
+                    $match = preg_match($pattern, $key);
+                    if ($match) {
+                        $res .= $key[4] .'-й квартал 20' . $key[8] . $key[9] . ' года <br>';
+                    }
+                }
+                
+                return $res . '<br>';
+        }  
+    }
+
 
     function findUK () {
         $res = '<b>Способы внесения УК:</b><br>';
@@ -234,16 +250,20 @@
     }
 
 
-    function findYearIfSimpleIP () {
-        if ($_POST['tax-system'] == 'general-ip') {
-            return null;
-        }
-        $str = '<b>Периоды:</b><br>';
-        if (isset($_POST['year-2017-ip-simple'])) { $str = $str . '2017 год' . '<br>'; }
-        if (isset($_POST['year-2016-ip-simple'])) { $str = $str . '2016 год' . '<br>'; }
-        if (isset($_POST['year-2015-ip-simple'])) { $str = $str . '2015 год' . '<br>'; }
-        
-        return $str . '<br>';   
+    function findYearIfSimpleIp () {
+        if ($_POST['tax-system'] == 'simple') {
+            $res = '<b>Периоды:</b><br>';
+
+            $pattern = '#^year#';        
+
+            foreach ($_POST as $key => $value) {
+                if (preg_match($pattern, $key)) {
+                    $res .= substr($key, 5, 4) . ' год <br>';
+                }
+            }
+            
+            return $res . '<br>';             
+        }     
     }
 
 
@@ -259,6 +279,7 @@
         } 
     }
 
+
     function showBase () {
         if (isset($_POST['base']) && $_POST['tax-system'] == 'simple') {
             if ($_POST['base'] == 'base-inc') { 
@@ -266,22 +287,10 @@
             }
 
             if ($_POST['base'] == 'base-inc-spent') { 
-                return '<b>База налогообложения: </b>Доходы - Расходы<br>'; 
+                return '<b>База налогообложения: </b>Доходы - Расходы<br><br>'; 
             }
         }
     }
-
-
-    // function showBaseIp () {
-    //     if (isset($_POST['base'])) {
-    //         if ($_POST['base'] == 'base-inc') { 
-    //             return '<b>База налогообложения: </b>Доходы<br><br>';
-    //         }
-    //         if ($_POST['base'] == 'base-inc-spent') { 
-    //             return '<b>База налогообложения: </b>Доходы - Расходы<br><br>'; 
-    //         }  
-    //     } else return "-";
-    // }
 
 
     function showOneFace () {
@@ -391,60 +400,40 @@
         } 
     }
 
-    function showPaspSerOfIp () {
-        
-        if (isset($_POST['pasp-ser-ip']) && $_POST['tax-system'] == 'general-ip') {
+    function showPaspSerOfIp () {        
+        if (isset($_POST['pasp-ser-ip']) && $_POST['tax-system'] == 'general') {
             return '<b>Паспорт серия: </b>' . $_POST['pasp-ser-ip'] . 
                    '<br><br>'; 
         } 
     }
 
     function showPaspNumOfIp () {
-        if (isset($_POST['pasp-num-ip']) && $_POST['tax-system'] == 'general-ip') {
+        if (isset($_POST['pasp-num-ip']) && $_POST['tax-system'] == 'general') {
             return '<b>Паспорт номер: </b>' . $_POST['pasp-num-ip'] . 
                    '<br><br>'; 
         } 
     }
 
     function showPaspDateOfIssueOfIp () {
-        if (isset($_POST['pasp-date-issue-ip']) && $_POST['tax-system'] == 'general-ip') {
+        if (isset($_POST['pasp-date-issue-ip']) && $_POST['tax-system'] == 'general') {
             return '<b>Дата выдачи: </b>' . $_POST['pasp-date-issue-ip'] . 
                    '<br><br>'; 
         } 
     }
 
     function showPaspWhoIssueOfIp () {
-        if (isset($_POST['email-ip']) && $_POST['tax-system'] == 'general-ip') {
+        if (isset($_POST['email-ip']) && $_POST['tax-system'] == 'general') {
             return '<b>Кем выдан: </b>' . $_POST['pasp-who-issue-ip'] . 
                    '<br><br>'; 
         } 
     }
 
     function showPaspKpOfIp () {
-        if (isset($_POST['pasp-kp-ip']) && $_POST['tax-system'] == 'general-ip') {
+        if (isset($_POST['pasp-kp-ip']) && $_POST['tax-system'] == 'general') {
             return '<b>Код подразделения: </b>' . $_POST['pasp-kp-ip'] . 
                    '<br><br>'; 
         } 
     }
-
-
-    // function findQuart () {
-    //     if (isset($_POST['submit-go-to-pay-ip']) && ($_POST['tax-system'] == 'simple-ip')) {
-    //         return null;
-    //     }
-
-    //     $res = '<b>Периоды:</b><br>';
-    //     $pattern = '#^qrt#';        
-
-    //     foreach ($_POST as $key => $value) {
-    //         $match = preg_match($pattern, $key);
-    //         if ($match) {
-    //             $res .= $key[4] .'-й квартал 20' . $key[8] . $key[9] . ' года <br>';
-    //         }
-    //     }
-        
-    //     return $res . '<br>';   
-    // }
 
 
     function willSendDeclOne () {
@@ -486,7 +475,26 @@
             }
 
             return $res . '<br>';
-        };
+        }
+    }
+
+
+    function willSendDeclNdfl () {
+        $res = "";
+
+        if ($_POST['tax-system'] == 'general') {
+            $pattern = '#^decl-ndfl-final#';        
+
+            foreach ($_POST as $key => $value) {
+                if (preg_match($pattern, $key)) {
+                    $res .= '<b>Налоговая декларация 3-НДФЛ за </b>' 
+                         . substr($key, 16) 
+                         . ' год<br>';
+                }
+            }   
+        }
+
+        return $res . '<br>'; 
     }
 
 
@@ -634,50 +642,6 @@
         return $res . '<br>';
     }
 
-
-    function willSendDeclNdsIp () {
-        $str = "";
-        if (isset($_POST['decl-nds']) && $_POST['tax-system'] == 'general-ip') {
-            $str .= '<b>Налоговая декларация по НДС: </b>' . '<br><br>';
-            if (isset($_POST['decl-nds-final-4-17'])) { $str .= '4-й квартал 2017 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-3-17'])) { $str .= '3-й квартал 2017 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-2-17'])) { $str .= '2-й квартал 2017 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-1-17'])) { $str .= '1-й квартал 2017 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-4-16'])) { $str .= '4-й квартал 2016 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-3-16'])) { $str .= '3-й квартал 2016 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-2-16'])) { $str .= '2-й квартал 2016 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-1-16'])) { $str .= '1-й квартал 2016 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-4-15'])) { $str .= '4-й квартал 2015 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-3-15'])) { $str .= '3-й квартал 2015 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-2-15'])) { $str .= '2-й квартал 2015 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-1-15'])) { $str .= '1-й квартал 2015 года' . '<br>'; }
-            if (isset($_POST['decl-nds-final-4-14'])) { $str .= '4-й квартал 2014 года' . '<br>'; }
-            
-            return $str . '<br>' . '<br>';
-        };
-    }
-
-    function willSendDeclNdflIp () {
-        $str = "";
-        if ($_POST['tax-system'] == 'general-ip') {
-            if (isset($_POST['decl-ndfl-ip-4-2017'])) { $str .= '<b>Налоговая декларация 3-НДФЛ за 2017 год</b>' . '<br>'; }
-            if (isset($_POST['decl-ndfl-ip-4-2016'])) { $str .= '<b>Налоговая декларация 3-НДФЛ за 2016 год</b>' . '<br>'; }
-            if (isset($_POST['decl-ndfl-ip-4-2015'])) { $str .= '<b>Налоговая декларация 3-НДФЛ за 2015 год</b>' . '<br>'; }
-            
-            return $str . '<br>' . '<br>';
-        };
-    }
-
-    function willSendDeclYearIp () {
-        $str = "";
-        if ($_POST['tax-system'] == 'simple-ip') {
-            if (isset($_POST['decl-year-2017-ip-simple'])) { $str .= '<b>Налоговая декларация за 2017 год</b>' . '<br>'; }
-            if (isset($_POST['decl-year-2016-ip-simple'])) { $str .= '<b>Налоговая декларация за 2016 год</b>' . '<br>'; }
-            if (isset($_POST['decl-year-2015-ip-simple'])) { $str .= '<b>Налоговая декларация за 2015 год</b>' . '<br>'; }
-            
-            return $str . '<br>' . '<br>';
-        }
-    }
 
     function showTotalAmount() {
         $str = "";

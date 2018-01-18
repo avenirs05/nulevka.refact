@@ -28,6 +28,7 @@ $(function () {
 			$('#transactions-section').hide();
 	    showReportsWillSendIp();    
 	    $('#final-sum-digits').text( calculateFinalSumIp() );
+	    showPaspDataFromCustomerIp();
 	});
 
 });

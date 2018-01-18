@@ -27,27 +27,27 @@
     <input id="email-ip" type="text" name="email-ip">
   </div>
   
-  <div>
+  <div style="display: none;">
     <div>Паспорт серия</div>
     <input id="pasp-ser-ip" type="text" name="pasp-ser-ip">
   </div>
   
-  <div>
+  <div style="display: none;">
     <div>Паспорт №</div>
     <input id="pasp-num-ip" type="text" name="pasp-num-ip">
   </div>
   
-  <div>
+  <div style="display: none;">
     <div>Дата выдачи</div>
     <input id="pasp-date-issue-ip" type="text" name="pasp-date-issue-ip">
   </div>
   
-  <div>
+  <div style="display: none;">
     <div>Кем выдан</div>
     <input id="pasp-who-issue-ip" type="text" name="pasp-who-issue-ip">
   </div>
   
-  <div>
+  <div style="display: none;">
     <div>Код подразделения</div>
     <input id="pasp-kp-ip" type="text" name="pasp-kp-ip">
   </div>       

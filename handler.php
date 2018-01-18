@@ -169,7 +169,7 @@ if (isset($_GET['submit-not-know-ip'])) {
 if (isset($_POST['submit-go-to-pay-ooo'])) {    
     $message = '<html><head><title></title></head><body>
     <b>Кто обращается:</b> ООО<br><br>' .
-    isGeneralOrSimpleTaxSystemCompany() .
+    isGeneralOrSimpleTaxSystem() .
     findQuart() .
     findUK() .
     showQuestTrans() .
@@ -205,34 +205,32 @@ if (isset($_POST['submit-go-to-pay-ooo'])) {
 if (isset($_POST['submit-go-to-pay-ip'])) {   
     $message = '<html><head><title></title></head><body>
     <b>Кто обращается:</b> ИП<br><br>' .
-    // isGeneralOrSimpleTaxSystem() .
-    // showBaseIp() .
-    // findQuart() .
-    // findYearIfSimpleIP() .
-    // showNameOfIp() .
-    // showInnOfIp() .
-    // showOktmoOfIp() .
-    // showPhoneOfIP() .
-    // showEmailOfIp() .
-    // showPaspSerOfIp() .
-    // showPaspNumOfIp() .
-    // showPaspDateOfIssueOfIp() .
-    // showPaspWhoIssueOfIp() .
-    // showPaspKpOfIp() . 
+    isGeneralOrSimpleTaxSystem() .
+    showBase() .
+    findQuartIp() .
+    findYearIfSimpleIp() .
+    showNameOfIp() .
+    showInnOfIp() .
+    showOktmoOfIp() .
+    showPhoneOfIP() .
+    showEmailOfIp() .
+    showPaspSerOfIp() .
+    showPaspNumOfIp() .
+    showPaspDateOfIssueOfIp() .
+    showPaspWhoIssueOfIp() .
+    showPaspKpOfIp() .
     '<span style="font-size: 20px;">Мы Вам подготовим:</span><br><br>' .
-    // willSendDeclNdsIp() .    
-    // willSendDeclNdflIp() .
-    // willSendDeclYearIp () . 
-    // showTotalAmount() .
+    willSendDeclNds() .
+    willSendDeclNdfl() .
+    willSendDeclUsn() .
     'Ip-адрес: ' . $_SERVER['REMOTE_ADDR'] .
     '</body></html>';
     
     mail($to, $subject, $message, $headers);  
 }
 
-echo isGeneralOrSimpleTaxSystem();
-echo showBase();
-echo findQuart();
+
+
 
 
 ?>

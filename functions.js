@@ -417,7 +417,7 @@
         $('#will-send-section').show(); 
         
         if ( $('#simple').prop('checked') ) { 
-                yearsWillSend('#decl-usn-wrap', 'decl-usn-final', 'Налоговая декларация по УСН за ', true);
+                yearsWillSend('#decl-usn-wrap', 'decl-usn', 'Налоговая декларация по УСН за ', true);
         }
 
         if ( $('#general').prop('checked') ) { 
@@ -688,6 +688,23 @@
               $('#snils-dir').parent().show(); 
         }        
     }
+
+
+
+    // Если Ип и 4-й кв-л, то в форме от клиента в will-send добавляются поля по паспортным данным
+    function showPaspDataFromCustomerIp () {
+        if ( noCheckedFourQuart() !== true ) {
+             $('#pasp-ser-ip').parent().show();
+             $('#pasp-num-ip').parent().show();
+             $('#pasp-date-issue-ip').parent().show();
+             $('#pasp-who-issue-ip').parent().show();
+             $('#pasp-kp-ip').parent().show();
+        }       
+    }
+
+
+
+
 
 
 
